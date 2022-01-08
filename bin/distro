@@ -4,13 +4,76 @@ const { program } = require('commander');
 const { exec } = require('child_process');
 
 program
-  .command('hello')
-  .description('say hello')
+  .command('clean')
+  .description('clean system residual packages dependencies')
   .action(() => {
-    console.log('Hello')
-    console.log(' World')
-    console.log('!')
-    exec("echo 'echo Vai Corinthians' >> ~/.bashrc");
+    console.log('cleaned')
+  });
+
+program
+  .command('download')
+  .description('download the given binary package into the current directory')
+  .action(() => {
+    console.log('downloaded')
+  });
+
+program
+  .command('fix')
+  .description('fix system issues')
+  .action(() => {
+    console.log('downloaded')
+  });
+
+
+program
+  .command('info')
+  .description('view info about a specific package')
+  .action(() => {
+    console.log('downloaded')
+  });
+
+program
+  .command('install')
+  .description('Install a Package from Repositories')
+  .action(() => {
+    console.log('downloaded')
+  });
+
+
+program
+  .command('installed')
+  .description('list installed packages')
+  .action(() => {
+    console.log('downloaded')
+  });
+
+program
+  .command('remove')
+  .description('remove one or more installed packages')
+  .action(() => {
+    console.log('downloaded')
+  });
+
+
+program
+  .command('search')
+  .description('find a package')
+  .action(() => {
+    console.log('downloaded')
+  });
+
+program
+  .command('update')
+  .description('update package lists')
+  .action(() => {
+    console.log('downloaded')
+  });
+
+program
+  .command('upgrade')
+  .description('upgrade installed packages')
+  .action(() => {
+    console.log('downloaded')
   });
 
 program.parse();
