@@ -4,6 +4,7 @@
   "description": "porcelain front-end of gnu/linux distros package managers",
   "main": "bin/distro",
   "scripts": {
+    "bin": "bin/distro.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,6 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "commander": "^8.3.0"
-  }
+  },
+  "type": "module"
 }
