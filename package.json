@@ -1,0 +1,24 @@
+{
+  "name": "distro",
+  "version": "0.0.1",
+  "description": "porcelain front-end of gnu/linux distros package managers",
+  "main": "bin/distro",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.sr.ht/~easbarba/distro.js"
+  },
+  "keywords": [
+    "apt",
+    "apk",
+    "dnf",
+    "pacman"
+  ],
+  "author": "eas barbosa",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "commander": "^8.3.0"
+  }
+}

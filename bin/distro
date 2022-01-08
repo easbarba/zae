@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+const { program } = require('commander');
+const { exec } = require('child_process');
+
+program
+  .command('hello')
+  .description('say hello')
+  .action(() => {
+    console.log('Hello')
+    console.log(' World')
+    console.log('!')
+    exec("echo 'echo Vai Corinthians' >> ~/.bashrc");
+  });
+
+program.parse();
