@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const { program } = require('commander');
-const { exec } = require('child_process');
+import { Command } from 'commander';
+const program = new Command();
 
 program
   .command('clean')
@@ -23,7 +23,6 @@ program
   .action(() => {
     console.log('downloaded')
   });
-
 
 program
   .command('info')
@@ -56,11 +55,12 @@ program
 
 
 program
-  .command('search')
-  .description('find a package')
-  .action(() => {
-    console.log('downloaded')
-  });
+  .command('search <package>')
+  .description('find a package package')
+  // .action((package) => {
+  //   console.log(package)
+  // })
+  ;
 
 program
   .command('update')
@@ -73,7 +73,24 @@ program
   .command('upgrade')
   .description('upgrade installed packages')
   .action(() => {
-    console.log('downloaded')
+
   });
 
-program.parse();
+import System from '../src/system.js';
+program
+  .command('system')
+  .description('list system information')
+  .action(() => {
+    let system = new System('apt')
+    console.log(`manager: ${system.executable()}`)
+    console.log(`location: ${system.location()}`)
+  });
+
+program
+  .command('version')
+  .description('package version')
+  .action(() => {
+    console.log('version: 0.0.1')
+  });
+
+program.parse(process.argv);
