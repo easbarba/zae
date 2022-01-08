@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := build
+.DEFAULT_GOAL := install
 
 fmt:
 	npx prettier --write src/*
@@ -7,24 +7,28 @@ fmt:
 lint:
 	npx eslint src/*
 
-install:
+deps:
+	npm install
+
+install: deps
 	npm link
+.PHONY:install
 
 clean:
 	rm -rf "$PWD/node_modules"
 .PHONY:clean
 
-deps:
-	npm install
-
 audit:
 	npm audit
 
-c-build:
+build:
 	docker-compose build
 
-c-run:
-	docker-compose run --rm --service-ports distro_dev
+run:
+	docker-compose run --rm --name distro --service-ports
 
-c-down:
+attach:
+	docker exec -it distro
+
+down:
 	docker-compose stop
