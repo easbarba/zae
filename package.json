@@ -19,14 +19,14 @@
   ],
   "author": "Eas Barbosa",
   "license": "GPL-3.0-or-later",
-  "dependencies": {
-    "commander": "^8.3.0"
-  },
   "type": "module",
   "devDependencies": {
     "eslint": "^8.6.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "prettier": "2.5.1"
+  },
+  "dependencies": {
+    "commander": "^8.3.0"
   }
 }
