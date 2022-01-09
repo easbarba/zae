@@ -1,31 +1,31 @@
-"use strict";
+'use strict';
 
-class Commands {
+export default class Commands {
   clean() {
-    return "clean";
+    return 'clean';
   }
   download() {
-    return "download";
+    return 'download';
   }
   info() {
-    return "info";
+    return 'info';
   }
   install() {
-    return "install";
+    return 'install';
   }
   installed() {
-    return "installed";
+    return 'installed';
   }
   remove() {
-    return "remove";
+    return 'remove';
   }
   search() {
-    return "search";
+    return 'search';
   }
   update() {
-    return "update";
+    return 'update';
   }
   upgrade() {
-    return "upgrade";
+    return 'upgrade';
   }
 }

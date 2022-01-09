@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import commandv from "./services/utils.js";
+import commandv from './services/utils.js';
 
 export default class System {
   constructor(name) {
