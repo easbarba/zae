@@ -1,9 +1,14 @@
 FROM node:lts-alpine
 
-COPY package.json package-lock.json /app/
-WORKDIR /app/
+ENV APP "/app "
+
+COPY package.json package-lock.json $APP/
+COPY examples/ /root/.config/distro
+
+WORKDIR $APP/
 
 RUN npm install
 
-COPY examples/ /root/.config/distro
-COPY . /app/
+COPY . $APP/
+
+CMD ["bin/distro.js"]
