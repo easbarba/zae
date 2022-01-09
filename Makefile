@@ -1,5 +1,9 @@
 .DEFAULT_GOAL := install
 
+NAME = distro
+IMAGE_NAME = $(USER)/$(NAME)
+CONTAINER_NAME = $(NAME)_dev
+
 fmt:
 	npx prettier --write src/*
 .PHONY:fmt
@@ -15,20 +19,21 @@ install: deps
 .PHONY:install
 
 clean:
-	rm -rf "$PWD/node_modules"
+	rm -rf $(PWD)/node_modules
 .PHONY:clean
 
 audit:
 	npm audit
 
 build:
-	docker-compose build
+	docker build --tag $(IMAGE_NAME) .
 
 run:
-	docker-compose run --rm --name distro --service-ports
+	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
 attach:
-	docker exec -it distro
+	docker exec -it $(CONTAINER_NAME) sh
 
-down:
-	docker-compose stop
+purge:
+	docker rm $(CONTAINER_NAME)
+	docker stop $(CONTAINER_NAME)
