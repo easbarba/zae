@@ -3,6 +3,10 @@
 import { Command } from 'commander';
 const program = new Command();
 
+// import Main from '../src/main.js';
+// const main = letew Main();
+import Packager from '../src/packager.js';
+
 program
   .command('clean')
   .description('clean system residual packages dependencies')
@@ -73,17 +77,18 @@ program
   .command('upgrade')
   .description('upgrade installed packages')
   .action(() => {
-
+    main.action = 'upgrade'
+    console.log(`command: ${main.run()}`)
   });
 
-import System from '../src/system.js';
 program
   .command('system')
   .description('list system information')
   .action(() => {
-    let system = new System('apt')
-    console.log(`manager: ${system.executable()}`)
-    console.log(`location: ${system.location()}`)
+    let p = new Packager();
+    console.log(`manager: ${p.found()}`)
+    // console.log(`manager: ${p.executable()}`)
+    // console.log(`location: ${p.location()}`)
   });
 
 program
