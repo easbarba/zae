@@ -2,7 +2,7 @@
 
 import * as Path from 'path';
 import { homedir } from 'os';
-import { readdirSync } from 'fs';
+import * as Fs from 'fs';
 
 export default class Packagers {
   constructor() {
@@ -13,7 +13,7 @@ export default class Packagers {
     let result = {};
 
     try {
-      const files = readdirSync(this.folder);
+      const files = Fs.readdirSync(this.folder);
 
       files.forEach((file) => {
         let ext = Path.extname(file);
