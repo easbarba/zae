@@ -34,6 +34,9 @@ run:
 attach:
 	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
 
+unit:
+	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm test
+
 purge:
 	docker rm $(CONTAINER_NAME)
 	docker stop $(CONTAINER_NAME)
