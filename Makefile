@@ -32,7 +32,7 @@ run:
 	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
 attach:
-	docker exec -it $(CONTAINER_NAME) sh
+	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
 
 purge:
 	docker rm $(CONTAINER_NAME)
