@@ -1,6 +1,6 @@
 # Distro
 
-A simple porcelain front-end to manage system packages in your favorite GNU/Linux distribution.
+A porcelain front-end to manage system packages in your favorite GNU/Linux distribution box.
 
 <pre>
 Ain't ya just annoyed of having to recall all those different commands of every
@@ -9,12 +9,6 @@ distribution you happen to need to use? apt that, apk this, dnf those... goddamn
 Look no further! we have here your solution to all your problems: `distro`, the
 dream of all tired UNIX power-user comes true.
 </pre>
-
-## Installation
-
-Get all needed dependencies and install `distro` with make:
-
-    $ make deps && make install
 
 ## Usage
 
@@ -43,7 +37,7 @@ Get all needed dependencies and install `distro` with make:
 
 ## Configuration
 
-Distro will look for YAML files containing packagers commands at `$XDG_CONFIG_HOME/distro`.
+`distro` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/distro`.
 
 -> `$XDG_CONFIG_HOME/distro/apk.json`
 
@@ -69,6 +63,12 @@ Distro will look for YAML files containing packagers commands at `$XDG_CONFIG_HO
   }
 }
 ```
+
+## Installation
+
+Get all needed dependencies and install `distro` with make:
+
+    $ make deps && make install
 
 ## History
 
