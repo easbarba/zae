@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
-// commander.js
 import { Command } from 'commander';
+
+import Index from '../src/index.ts';
+
 const program = new Command();
 
-// project files
-import Index from '../src/index.ts';
 const index = new Index('install');
-import Packager from '../src/packager.ts';
 
 program
   .command('clean')
@@ -82,8 +81,6 @@ program
   .command('system')
   .description('list system information')
   .action(() => {
-    let p = new Packager();
-    console.log(`manager: ${p.found()}`);
     // console.log(`manager: ${p.executable()}`)
     // console.log(`location: ${p.location()}`)
   });
