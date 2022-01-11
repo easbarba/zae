@@ -45,25 +45,29 @@ Get all needed dependencies and install `distro` with make:
 
 Distro will look for YAML files containing packagers commands at `$XDG_CONFIG_HOME/distro`.
 
--> `$XDG_CONFIG_HOME/distro/apt.yml`
+-> `$XDG_CONFIG_HOME/distro/apk.json`
 
-```yaml
----
-exec: /usr/bin/apt
-builddep: build-dep
-clean: autoremove
-depends: depends
-download: download
-fix: install -f
-help: help
-info: show
-install: install
-installed: list --installed
-remove: remove
-search: search
-sysupgrade: dist-upgrade
-update: update
-upgrade: upgrade
+```json
+{
+  "exec": "/sbin/apk",
+  "super": {
+    "update": "update",
+    "upgrade": "upgrade",
+    "deps": "",
+    "clean": "autoremove",
+    "depends": "depends",
+    "install": "add",
+    "remove": "del",
+    "download": "download",
+    "fix": "fix"
+  },
+  "user": {
+    "search": "search",
+    "help": "help",
+    "info": "show",
+    "version": "version"
+  }
+}
 ```
 
 ## History
@@ -77,24 +81,6 @@ Distro began as a module of a super package called `cejo` and extracted as stand
 - regexp support.
 - simpler name.
 - auto generate commands for most common distributions.
-- improve configuration files by separating commands by: superuser, user, binary...
-
-```yaml
----
-exec: /usr/bin/apt
-
-super:
-  builddep: build-dep
-  clean: autoremove
-  depends: depends
-  install: install
-  download: download
-
-user:
-  fix: install -f
-  help: help
-  info: show
-```
 
 - allow only pre-defined commands to be run.
 - non-safe mode.
