@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
+// commander.js
 import { Command } from 'commander';
 const program = new Command();
 
-import Index from '../src/index.js';
+// project files
+import Index from '../src/index.ts';
 const index = new Index('install');
-import Packager from '../src/packager.js';
+import Packager from '../src/packager.ts';
 
 program
   .command('clean')
