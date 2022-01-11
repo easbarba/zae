@@ -1,12 +1,12 @@
 # Distro
 
-A porcelain front-end to manage system packages in your favorite GNU/Linux distribution box.
+Unique commands to manage packages yours favorites GNU/Linux distributions boxes.
 
 <pre>
 Ain't ya just annoyed of having to recall all those different commands of every
 distribution you happen to need to use? apt that, apk this, dnf those... goddamn!
 
-Look no further! we have here your solution to all your problems: `distro`, the
+Look no further! we have here your solution to all your problems: `distro`, where the
 dream of all tired UNIX power-user comes true.
 </pre>
 
@@ -70,6 +70,10 @@ Get all needed dependencies and install `distro` with make:
 
     $ make deps && make install
 
+-- User install only!
+
+PS: you may need to set PATH to find local packages.
+
 ## History
 
 Distro began as a module of a super package called `cejo` and extracted as standalone to follow the UNIX main rule: 'do one thing, well'.
@@ -81,7 +85,7 @@ Distro began as a module of a super package called `cejo` and extracted as stand
 - regexp support.
 - simpler name.
 - auto generate commands for most common distributions.
-
+- provide commands w/ additional options by using --options.
 - allow only pre-defined commands to be run.
 - non-safe mode.
 - wizard to easily add a new system commands, user can add only a few cmds at first.
