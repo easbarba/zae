@@ -11,6 +11,9 @@ fmt:
 lint:
 	npx eslint src/*
 
+tsc:
+	npx tsc
+
 deps:
 	npm install
 
