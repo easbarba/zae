@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "porcelain front-end of gnu/linux distros package managers",
   "main": "./bin/distro",
-  "bin": "./bin/distro.js",
+  "bin": "./bin/distro.ts",
   "scripts": {
     "test": "mocha",
     "start": "ts-node ./src/index.ts"
