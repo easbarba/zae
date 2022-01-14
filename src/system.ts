@@ -1,19 +1,19 @@
-'use strict';
+'use strict'
 
-import commandv from './services/utils.js';
+import commandv from './services/utils.js'
 
 export default class System {
-  name: string;
+    name: string
 
-  constructor(name: string) {
-    this.name = name;
-  }
+    constructor(name: string) {
+        this.name = name
+    }
 
-  executable() {
-    return this.name;
-  }
+    executable() {
+        return this.name
+    }
 
-  location() {
-    return commandv(this.name);
-  }
+    location() {
+        return commandv(this.name)
+    }
 }

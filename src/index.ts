@@ -1,28 +1,28 @@
-'use strict';
+'use strict'
 
-import ParsedCommands from './parsed-commands.js';
+import ParsedCommands from './parsed-commands.js'
 
 export default class Index {
-  action: string;
+    action: string
 
-  constructor(action: string) {
-    this.action = action;
-  }
+    constructor(action: string) {
+        this.action = action
+    }
 
-  packager() {}
+    packager() {}
 
-  commands() {
-    let commands = new ParsedCommands().all();
-    return commands;
-  }
+    commands() {
+        let commands = new ParsedCommands().all()
+        return commands
+    }
 
-  real_action() {}
+    real_action() {}
 
-  need() {}
+    need() {}
 
-  final_command() {}
+    final_command() {}
 
-  run() {
-    return this.action;
-  }
+    run() {
+        return this.action
+    }
 }
