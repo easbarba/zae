@@ -5,7 +5,7 @@ import { homedir } from 'os';
 import * as Fs from 'fs';
 
 export default class Packagers {
-  folder = Path.join(homedir(), '.config', 'distro');
+  folder = Path.join(homedir(), '.config', 'distrojs');
 
   getFiles() {
     let result: { [a: string]: string } = { apt: '/bin/apt' };
@@ -16,8 +16,8 @@ export default class Packagers {
       files.forEach((file) => {
         let ext = Path.extname(file);
 
-        if (ext === '.json') {
-          let name = Path.basename(file, '.json');
+        if (ext === '.yml') {
+          let name = Path.basename(file, '.yml');
           result[name] = Path.join(this.folder, file);
         }
       });

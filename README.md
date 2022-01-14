@@ -1,6 +1,6 @@
 # Distro
 
-Unique commands to manage packages yours favorites GNU/Linux distributions boxes.
+Unified commands to manage system packages of distributions boxes.
 
 <pre>
 Ain't ya just annoyed of having to recall all those different commands of every
@@ -37,31 +37,27 @@ dream of all tired UNIX power-user comes true.
 
 ## Configuration
 
-`distro` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/distro`.
+`distro` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/distrojs`.
 
--> `$XDG_CONFIG_HOME/distro/apk.json`
+-> `$XDG_CONFIG_HOME/distrojs/apk.yml`
 
-```json
-{
-  "exec": "/sbin/apk",
-  "super": {
-    "update": "update",
-    "upgrade": "upgrade",
-    "deps": "",
-    "clean": "autoremove",
-    "depends": "depends",
-    "install": "add",
-    "remove": "del",
-    "download": "download",
-    "fix": "fix"
-  },
-  "user": {
-    "search": "search",
-    "help": "help",
-    "info": "show",
-    "version": "version"
-  }
-}
+```yaml
+exec: /usr/bin/apt
+super:
+  update: update
+  upgrade: upgrade
+  deps: build-dep
+  clean: autoremove
+  depends: depends
+  install: install
+  remove: remove
+  download: download
+  fix: install -f
+user:
+  search: search
+  help: help
+  info: show
+  version: version
 ```
 
 ## Installation

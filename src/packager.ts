@@ -1,15 +1,22 @@
 'use strict';
 
 import * as Fs from 'fs';
+
+import * as Yaml from 'js-yaml';
+
 import Packagers from './packagers.js';
 
 export default class Packager {
-  packagers = new Packagers();
+  packagers: Packagers;
+
+  constructor() {
+    this.packagers = new Packagers();
+  }
 
   readFile(file: string) {
     try {
-      const data = Fs.readFileSync(file).toString();
-      const obj = JSON.parse(data);
+      const data = Fs.readFileSync(file, 'utf8');
+      const obj = Yaml.load(data.toString());
 
       return obj;
     } catch (err) {
