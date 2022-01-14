@@ -3,9 +3,9 @@
 import commandv from './services/utils.js'
 
 export default class System {
-    name: string
+    name
 
-    constructor(name: string) {
+    constructor(name) {
         this.name = name
     }
 

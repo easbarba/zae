@@ -3,9 +3,9 @@
 import ParsedCommands from './parsed-commands.js'
 
 export default class Index {
-    action: string
+    action
 
-    constructor(action: string) {
+    constructor(action) {
         this.action = action
     }
 

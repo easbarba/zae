@@ -7,13 +7,13 @@ import * as Yaml from 'js-yaml'
 import Packagers from './packagers.js'
 
 export default class Packager {
-    packagers: Packagers
+    packagers
 
     constructor() {
         this.packagers = new Packagers()
     }
 
-    readFile(file: string) {
+    readFile(file) {
         try {
             const data = Fs.readFileSync(file, 'utf8')
             const obj = Yaml.load(data.toString())
@@ -24,7 +24,7 @@ export default class Packager {
         }
     }
 
-    execExists(file: string) {
+    execExists(file) {
         try {
             const stat = Fs.lstatSync(file)
 
@@ -36,7 +36,7 @@ export default class Packager {
 
     found() {
         const files = Object.values(this.packagers.getFiles())
-        let result: string = ''
+        let result = ''
 
         for (const file of files) {
             if (this.execExists(file)) {

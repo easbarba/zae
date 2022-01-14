@@ -5,7 +5,7 @@ import * as Path from 'path'
  * mimics unix command -v
  * @param {string} - executable to be find.
  */
-export default function commandv(executable: string) {
+export default function commandv(executable) {
     const pathes = process.env.PATH?.split(':') ?? [
         '/bin',
         '/usr/bin',

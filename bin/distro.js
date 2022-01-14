@@ -2,7 +2,7 @@
 
 import { Command } from 'commander'
 
-import Index from '../src/index.ts'
+import Index from '../src/index.js'
 
 const program = new Command()
 

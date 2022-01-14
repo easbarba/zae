@@ -8,7 +8,7 @@ export default class Packagers {
     folder = Path.join(homedir(), '.config', 'distrojs')
 
     getFiles() {
-        let result: { [a: string]: string } = { apt: '/bin/apt' }
+        let result = { apt: '/bin/apt' }
 
         try {
             const files = Fs.readdirSync(this.folder)
