@@ -3,17 +3,17 @@
 import commandv from './services/utils.js'
 
 export default class System {
-    name
+  name
 
-    constructor(name) {
-        this.name = name
-    }
+  constructor(name) {
+    this.name = name
+  }
 
-    executable() {
-        return this.name
-    }
+  executable() {
+    return this.name
+  }
 
-    location() {
-        return commandv(this.name)
-    }
+  location() {
+    return commandv(this.name)
+  }
 }

@@ -1,37 +1,37 @@
 export default class Commands {
-    clean() {
-        return 'clean'
-    }
+  clean() {
+    return 'clean'
+  }
 
-    download() {
-        return 'download'
-    }
+  download() {
+    return 'download'
+  }
 
-    info() {
-        return 'info'
-    }
+  info() {
+    return 'info'
+  }
 
-    install() {
-        return 'install'
-    }
+  install() {
+    return 'install'
+  }
 
-    installed() {
-        return 'installed'
-    }
+  installed() {
+    return 'installed'
+  }
 
-    remove() {
-        return 'remove'
-    }
+  remove() {
+    return 'remove'
+  }
 
-    search() {
-        return 'search'
-    }
+  search() {
+    return 'search'
+  }
 
-    update() {
-        return 'update'
-    }
+  update() {
+    return 'update'
+  }
 
-    upgrade() {
-        return 'upgrade'
-    }
+  upgrade() {
+    return 'upgrade'
+  }
 }
