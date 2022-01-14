@@ -3,7 +3,7 @@ FROM node:lts-alpine
 ENV APP "/app "
 
 COPY package.json package-lock.json $APP/
-COPY examples/ /root/.config/distro
+COPY examples/ /root/.config/distrojs
 
 WORKDIR $APP/
 
