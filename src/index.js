@@ -1,5 +1,3 @@
-'use strict'
-
 import ParsedCommands from './parsed-commands.js'
 import Packager from './packager.js'
 

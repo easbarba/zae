@@ -1,5 +1,3 @@
-'use strict'
-
 import * as Path from 'path'
 import { homedir } from 'os'
 import * as Fs from 'fs'

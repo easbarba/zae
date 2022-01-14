@@ -1,5 +1,3 @@
-'use strict'
-
 import * as Fs from 'fs'
 
 import * as Yaml from 'js-yaml'
