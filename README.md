@@ -37,6 +37,28 @@ where the dream of all tired UNIX power-user comes true.
 | update    | ud  | update Package Lists                                |
 | upgrade   | up  | upgrade Installed Packages                          |
 
+## Installation
+
+Get all needed dependencies and install `distro` with make:
+
+    $ make deps && make install
+
+PS: you may need to set PATH to find local packages.
+
+## Container
+
+Its as easy as any command to run `distro` locally:
+
+    $ make build && make run
+
+Test suite may be called with:
+
+    $ make test
+
+After everything is done:
+
+    $ make purge
+
 ## Configuration
 
 `distro` will look for configuration files containing packagers commands at
@@ -62,28 +84,6 @@ user:
   info: show
   version: version
 ```
-
-## Installation
-
-Get all needed dependencies and install `distro` with make:
-
-    $ make deps && make install
-
-PS: you may need to set PATH to find local packages.
-
-## Container
-
-Its as easy as any command to run `distro` locally:
-
-    $ make build && make run
-
-Test suite may be called with:
-
-    $ make test
-
-After everything is done:
-
-    $ make purge
 
 ## History
 
