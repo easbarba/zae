@@ -101,7 +101,7 @@ standalone package to follow the UNIX main rule: 'do one thing, well'.
 
   `$ distro --add --name 'emerge' --search '-s'`
 
-  `$ distro --add --name 'apt --search 'search --names-only'`
+  `$ distro --add --name 'apt' --search 'search --names-only'`
 
 - simulate dry-run.
 - display information on what executable and final command running.
