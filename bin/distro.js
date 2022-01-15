@@ -82,8 +82,8 @@ program
   .command('system')
   .description('list system information')
   .action(() => {
-    // console.log(`manager: ${p.executable()}`)
-    // console.log(`location: ${p.location()}`)
+    index.action = 'system'
+    index.run()
   })
 
 program

@@ -11,4 +11,4 @@ RUN npm install
 
 COPY . $APP/
 
-CMD ["bin/distro.ts", "system"]
+CMD ["bin/distro.js", "system"]
