@@ -1,7 +1,7 @@
-import Chalk from 'chalk'
-
 import ParsedCommands from './parsed-commands.js'
 import Packager from './packager.js'
+import Logger from './logger.js'
+import Info from './info.js'
 
 export default class Index {
   action = undefined
@@ -30,12 +30,17 @@ export default class Index {
   }
 
   info() {
-    console.log(Chalk.blue('command:'), this.action)
-    console.log(Chalk.green('arguments:'), this.arguments)
-    console.log(Chalk.red('running:'), this.final_command())
+    const info = new Info(this.action, this.arguments)
+    info.put()
+  }
+
+  log() {
+    const logger = new Logger(this.action, this.arguments)
+    logger.put()
   }
 
   run() {
+    this.log()
     this.info()
 
     this.final_command()
