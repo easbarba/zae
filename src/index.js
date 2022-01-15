@@ -31,9 +31,9 @@ export default class Index {
   }
 
   info() {
-    console.log(Chalk.blue(`command: ${this.action}`))
-    console.log(Chalk.green(`arguments: ${this.arguments}`))
-    console.log(Chalk.red(`running: ${this.final_command()}`))
+    console.log(Chalk.blue('command:'), this.action)
+    console.log(Chalk.green('arguments:'), this.arguments)
+    console.log(Chalk.red('running:'), this.final_command())
   }
 
   run() {
