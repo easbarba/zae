@@ -66,8 +66,6 @@ Get all needed dependencies and install `distro` with make:
 
     $ make deps && make install
 
--- User install only!
-
 PS: you may need to set PATH to find local packages.
 
 ## Container
