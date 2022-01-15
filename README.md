@@ -4,10 +4,11 @@ Unified commands to manage system packages of distributions boxes.
 
 <pre>
 Ain't ya just annoyed of having to recall all those different commands of every
-distribution you happen to need to use? apt that, apk this, dnf those... goddamn!
+distribution you happen to need to use? apt that, apk this, dnf those...
+goddamn!
 
-Look no further! we have here your solution to all your problems: `distro`, where the
-dream of all tired UNIX power-user comes true.
+Look no further! we have here your solution to all your problems: `distro`,
+where the dream of all tired UNIX power-user comes true.
 </pre>
 
 ## Usage
@@ -23,6 +24,8 @@ dream of all tired UNIX power-user comes true.
 | command   | ->  | information                                         |
 | --------- | :-: | --------------------------------------------------- |
 | clean     | cl  | clean system residual packages dependencies         |
+| deps      | de  | get package system dependencies to be built by user |
+| depends   | dp  | get package system dependencies to be built by user |
 | download  | dl  | download package binary                             |
 | fix       | fx  | fix system issues                                   |
 | help      | hp  | Shows a list of commands or help for one command    |
@@ -32,14 +35,14 @@ dream of all tired UNIX power-user comes true.
 | remove    | rm  | remove One or More Installed Packages               |
 | search    | sc  | find a Package                                      |
 | update    | ud  | update Package Lists                                |
-| upgrade   | ug  | upgrade Installed Packages                          |
-| getdeps   | gd  | get package system dependencies to be built by user |
+| upgrade   | up  | upgrade Installed Packages                          |
 
 ## Configuration
 
-`distro` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/distrojs`.
+`distro` will look for configuration files containing packagers commands at
+`$XDG_CONFIG_HOME/distrojs`.
 
--> `$XDG_CONFIG_HOME/distrojs/apk.yml`
+-> `$XDG_CONFIG_HOME/distrojs/apt.yml`
 
 ```yaml
 exec: /usr/bin/apt
@@ -84,22 +87,20 @@ After everything is done:
 
 ## History
 
-Distro began as a module of a super package called `cejo` and extracted as standalone to follow the UNIX main rule: 'do one thing, well'.
+` distro` began as a module of a super package called `cejo`, and extracted as
+standalone package to follow the UNIX main rule: 'do one thing, well'.
 
 ## TODO
 
-- commands shortcuts (download -> dl).
-- major distros commands set by default, but lets user overwrite with its config.
+- ask to auto generate commands for most common distributions.
 - regexp support.
-- simpler name.
-- auto generate commands for most common distributions.
 - provide commands w/ additional options by using --options.
-- allow only pre-defined commands to be run.
-- non-safe mode.
-- wizard to easily add a new system commands, user can add only a few cmds at first.
+- easily add new commands, user can add one or multiple per time:
+  `$ distro --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av`
 - simulate dry-run.
 - display information on what executable and final command running.
-- use more rspec features as mocks, expectation, before...
+- use more spec features as mocks, expectation, before...
+- non-safe mode.
 
 ## License
 
