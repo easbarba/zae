@@ -45,6 +45,24 @@ Get all needed dependencies and install `distro` with make:
 
 PS: you may need to set PATH to find local packages.
 
+## Commands: add, overwrite, append...
+
+In a fresh install or container, its easy to add new commands, one or multiple per time:
+
+`$ distro --add --name 'emerge' --exec '/usr/bin/emerge' --install '-av'`
+
+Once a config with exec is added it even easier to add new commands:
+
+`$ distro --add --name 'emerge' --search '-s'`
+
+Overwrite one command with cooller options goes the same:
+
+`$ distro --add --name 'apt' --search 'search --names-only'`
+
+Or even purge it all and start with your own commands:
+
+`$ distro --purge --name 'apt'`
+
 ## Container
 
 Its as easy as any command to run `distro` locally:
@@ -95,14 +113,6 @@ standalone package to follow the UNIX main rule: 'do one thing, well'.
 - ask to auto generate commands for most common distributions.
 - regexp support.
 - provide commands w/ additional options by using --options.
-- easily add new commands, user can add one or multiple per time:
-
-  `$ distro --add --name 'emerge' --exec '/usr/bin/emerge' --install '-av'`
-
-  `$ distro --add --name 'emerge' --search '-s'`
-
-  `$ distro --add --name 'apt' --search 'search --names-only'`
-
 - simulate dry-run.
 - display information on what executable and final command running.
 - use more spec features as mocks, expectation, before...
