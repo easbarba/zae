@@ -76,7 +76,7 @@ Its as easy as any command to run `distro` locally:
 
     $ make build && make run
 
-Test suite may be runned with:
+Test suite may be called with:
 
     $ make test
 
