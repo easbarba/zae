@@ -18,7 +18,7 @@ export default class Index {
   }
 
   commands() {
-    let commands = new ParsedCommands().all()
+    const commands = new ParsedCommands().all()
     return commands
   }
 
@@ -37,9 +37,8 @@ export default class Index {
   }
 
   run() {
-    return this.action
+    this.info()
+
+    this.final_command()
   }
 }
-
-const i = new Index('install')
-console.log(i.packager())
