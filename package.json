@@ -6,6 +6,7 @@
   "bin": "./bin/distro.ts",
   "scripts": {
     "test": "mocha",
+    "coverage": "nyc --reporter=text mocha",
     "start": "bin/distro.js",
     "index": "node src/index.js"
   },
@@ -13,12 +14,7 @@
     "type": "git",
     "url": "https://git.sr.ht/~easbarba/distro.js"
   },
-  "keywords": [
-    "apt",
-    "apk",
-    "dnf",
-    "pacman"
-  ],
+  "keywords": ["apt", "apk", "dnf", "pacman"],
   "author": "Eas Barbosa",
   "license": "GPL-3.0-or-later",
   "type": "module",
@@ -28,6 +24,7 @@
     "eslint-plugin-import": "^2.25.4",
     "jsdoc": "^3.6.7",
     "mocha": "^9.1.4",
+    "nyc": "^15.1.0",
     "prettier": "2.5.1"
   },
   "dependencies": {

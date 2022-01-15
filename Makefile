@@ -39,6 +39,8 @@ attach:
 
 unit:
 	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm test
+coverage:
+	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
 
 purge:
 	docker rm $(CONTAINER_NAME)
