@@ -22,7 +22,15 @@ export default class Index {
 
   need() {}
 
-  final_command() {}
+  final_command() {
+    this.packager()
+  }
+
+  info() {
+    console.log(Chalk.blue(`command: ${this.action}`))
+    console.log(Chalk.green(`arguments: ${this.arguments}`))
+    console.log(Chalk.red(`running: ${this.final_command()}`))
+  }
 
   run() {
     return this.action
