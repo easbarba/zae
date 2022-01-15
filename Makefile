@@ -38,7 +38,8 @@ attach:
 	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
 
 unit:
-	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm test
+	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
+
 coverage:
 	docker run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
 

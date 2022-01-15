@@ -70,6 +70,20 @@ Get all needed dependencies and install `distro` with make:
 
 PS: you may need to set PATH to find local packages.
 
+## Container
+
+Its as easy as any command to run `distro` locally:
+
+    $ make build && make run
+
+Test suite may be runned with:
+
+    $ make test
+
+After everything is done:
+
+    $ make purge
+
 ## History
 
 Distro began as a module of a super package called `cejo` and extracted as standalone to follow the UNIX main rule: 'do one thing, well'.
