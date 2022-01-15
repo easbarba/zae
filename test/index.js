@@ -2,10 +2,8 @@ import * as assert from 'assert'
 
 import Index from '../src/index.js'
 
-describe('Array', function() {
-  describe('#indexOf()', () => {
-
-
+describe('Index', function() {
+  describe('index main caller', () => {
     it('should get correct action', () => {
       const index = new Index('nodejs')
       index.action = 'install'
