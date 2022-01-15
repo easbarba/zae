@@ -98,7 +98,9 @@ standalone package to follow the UNIX main rule: 'do one thing, well'.
 - easily add new commands, user can add one or multiple per time:
 
   `$ distro --add --name 'emerge' --exec '/usr/bin/emerge' --install '-av'`
+
   `$ distro --add --name 'emerge' --search '-s'`
+
   `$ distro --add --name 'apt --search 'search --names-only'`
 
 - simulate dry-run.
