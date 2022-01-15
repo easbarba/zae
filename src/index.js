@@ -4,10 +4,12 @@ import ParsedCommands from './parsed-commands.js'
 import Packager from './packager.js'
 
 export default class Index {
-  action
+  action = ''
+  arguments = ''
 
-  constructor(action) {
+  constructor(args) {
     this.action = action
+    this.arguments = args
   }
 
   packager() {
