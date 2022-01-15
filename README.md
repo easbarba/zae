@@ -13,11 +13,14 @@ where the dream of all tired UNIX power-user comes true.
 
 ## Usage
 
-    $ distro install firefox emacs
-    $ distro remove openjdk
-    $ distro installed
-    $ distro search "^lib"
-    $ distro --help
+```sh
+distro install firefox emacs
+distro remove openjdk
+distro installed
+distro search '^node'
+distro search --options '--names-only' rust
+distro --help
+```
 
 ## Commands
 
