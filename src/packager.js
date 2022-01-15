@@ -1,7 +1,5 @@
 import * as Fs from 'fs'
 
-import * as Yaml from 'js-yaml'
-
 import Packagers from './packagers.js'
 
 export default class Packager {
@@ -11,15 +9,6 @@ export default class Packager {
     this.packagers = new Packagers()
   }
 
-  readFile(file) {
-    try {
-      const data = Fs.readFileSync(file, 'utf8')
-      const obj = Yaml.load(data.toString())
-
-      return obj
-    } catch (err) {
-      console.log(err)
-    }
   }
 
   execExists(file) {
