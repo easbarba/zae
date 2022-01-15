@@ -1,6 +1,6 @@
-import pino from 'pino'
+import Pino from 'pino'
 
-const Logger = pino(
+const logger = Pino(
   {
     transport: {
       target: 'pino-pretty',
@@ -9,10 +9,10 @@ const Logger = pino(
       },
     },
   },
-  pino.destination({ dest: '/root/.local/share/distro/misc.log', sync: false })
+  Pino.destination({ dest: '/root/.local/share/distro/misc.log', sync: false })
 )
 
-class Logger {
+export default class Logger {
   action = undefined
   arguments = undefined
 
@@ -25,5 +25,3 @@ class Logger {
     logger.info(`'command: ${this.action}`)
   }
 }
-
-export { Logger }

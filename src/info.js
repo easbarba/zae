@@ -1,6 +1,6 @@
 import Chalk from 'chalk'
 
-class Info {
+export default class Info {
   action = undefined
   arguments = undefined
 

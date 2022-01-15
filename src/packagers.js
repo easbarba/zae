@@ -1,7 +1,6 @@
 import * as Path from 'path'
 import { homedir } from 'os'
 import * as Fs from 'fs'
-
 import * as Yaml from 'js-yaml'
 
 export default class Packagers {
@@ -26,15 +25,14 @@ export default class Packagers {
 
     try {
       const files = Fs.readdirSync(this.folder)
-
-      files.forEach((file) => {
+      for (const file of files) {
         const ext = Path.extname(file)
 
         if (ext === extension) {
           const name = Path.basename(file, extension)
           result[name] = Path.join(this.folder, file)
         }
-      })
+      }
     } catch (err) {
       console.log(err)
     }
