@@ -96,7 +96,9 @@ standalone package to follow the UNIX main rule: 'do one thing, well'.
 - regexp support.
 - provide commands w/ additional options by using --options.
 - easily add new commands, user can add one or multiple per time:
+
   `$ distro --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av`
+
 - simulate dry-run.
 - display information on what executable and final command running.
 - use more spec features as mocks, expectation, before...
