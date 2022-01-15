@@ -6,7 +6,7 @@ import Index from '../src/index.js'
 
 const program = new Command()
 
-const index = new Index('install')
+const index = new Index()
 
 program
   .command('clean')
@@ -40,7 +40,8 @@ program
   .command('install')
   .description('Install a Package from Repositories')
   .action(() => {
-    console.log('downloaded')
+    index.action = 'install'
+    index.run()
   })
 
 program
