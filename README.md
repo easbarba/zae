@@ -97,7 +97,9 @@ standalone package to follow the UNIX main rule: 'do one thing, well'.
 - provide commands w/ additional options by using --options.
 - easily add new commands, user can add one or multiple per time:
 
-  `$ distro --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av`
+  `$ distro --add --name 'emerge' --exec '/usr/bin/emerge' --install '-av'`
+  `$ distro --add --name 'emerge' --search '-s'`
+  `$ distro --add --name 'apt --search 'search --names-only'`
 
 - simulate dry-run.
 - display information on what executable and final command running.
