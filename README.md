@@ -55,7 +55,7 @@ Once a config with exec is added it even easier to add new commands:
 
 `$ distro --add --name 'emerge' --search '-s'`
 
-Overwrite one command with cooller options goes the same:
+Overwrite one command with important options goes the same:
 
 `$ distro --add --name 'apt' --search 'search --names-only'`
 
