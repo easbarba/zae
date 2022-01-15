@@ -1,4 +1,4 @@
-import ParsedCommands from './parsed-commands.js'
+import ParsedCommands from './parsed_commands.js'
 import Packager from './packager.js'
 import Logger from './logger.js'
 import Info from './info.js'
