@@ -1,3 +1,5 @@
+import Chalk from 'chalk'
+
 import ParsedCommands from './parsed-commands.js'
 import Packager from './packager.js'
 
