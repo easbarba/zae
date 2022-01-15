@@ -8,7 +8,6 @@ export default class Index {
   arguments = ''
 
   constructor(args) {
-    this.action = action
     this.arguments = args
   }
 
