@@ -116,6 +116,11 @@ as standalone package to follow the UNIX main rule: 'do one thing, well'.
 - let user provide w/ additional options to commands (--options).
 - display information on the command being executable.
 - check if current configuration has been altered, cli interface is the recommended way.
+- check if current config has weird commands as rm,cd,mv, before running
+- log configuration changes
+- history of commands
+- upload to main repository package
+- read-only by default after cli modifications?
 - simulate dry-run.
 - regexp.
 - non-safe mode.
