@@ -1,5 +1,5 @@
 import Packagers from './packagers.js'
-import { commandv } from './services/utils.js'
+import { commandv } from './utilities.js'
 
 export default class Packager {
   packagers
