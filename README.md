@@ -108,17 +108,16 @@ user:
 
 ## History
 
-` distro` began as a module of a super package called `cejo`, and extracted as
-standalone package to follow the UNIX main rule: 'do one thing, well'.
+` distro` was a module of a super package called `cejo`, and later on extracted
+as standalone package to follow the UNIX main rule: 'do one thing, well'.
 
 ## TODO
 
-- ask to auto generate commands for most common distributions.
-- regexp support.
-- provide commands w/ additional options by using --options.
+- let user provide w/ additional options to commands (--options).
+- display information on the command being executable.
+- check if current configuration has been altered, cli interface is the recommended way.
 - simulate dry-run.
-- display information on what executable and final command running.
-- use more spec features as mocks, expectation, before...
+- regexp.
 - non-safe mode.
 
 ## License
