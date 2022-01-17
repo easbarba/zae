@@ -2,8 +2,8 @@ import { expect } from 'chai'
 
 import Index from '../src/index.js'
 
-describe('Index', function() {
-  describe('index main caller', () => {
+describe('Index', function () {
+  describe('main caller', () => {
     it('should have an undefined action', () => {
       const index = new Index('nodejs')
 
