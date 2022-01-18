@@ -42,11 +42,11 @@ distro --help
 
 ## Installation
 
-Get all needed dependencies and install `distro` with make:
+Get all needed dependencies and install in the system:
 
-    $ make deps && make install
+    $ npm install & npm link
 
-PS: you may need to set PATH to find local packages.
+PS: you may need to set $PATH to find local packages.
 
 ## Commands: add, overwrite, append...
 
@@ -68,15 +68,21 @@ Or even purge it all and start with your own commands:
 
 ## Container
 
-Its as easy as any command to run `distro` locally:
+Lets build as always: 
 
-    $ make build && make run
+    $ make build
 
-Test suite may be called with:
+Make sure everything is smooth and sounding:
 
     $ make test
 
-After everything is done:
+Either run or inspect the container with:
+
+    $ make run
+
+    $ make attach
+
+Once you are done, just clean up with:
 
     $ make purge
 
