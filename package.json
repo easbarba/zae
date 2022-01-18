@@ -9,6 +9,8 @@
     "coverage": "nyc --reporter=text mocha",
     "lint": "eslint --ext .js,.yml -f ./node_modules/eslint-friendly-formatter . --fix",
     "start": "bin/distro.js",
+    "audit": "npm audit",
+    "fmt": "npx prettier --write src/*",
     "index": "node src/index.js"
   },
   "repository": {
