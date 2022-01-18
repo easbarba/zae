@@ -1,24 +1,27 @@
-.DEFAULT_GOAL := install
+.DEFAULT_GOAL := build
 
 NAME = distro
 IMAGE_NAME = $(USER)/$(NAME)
 CONTAINER_NAME = $(NAME)_dev
 
+# set to docker, if you dare.
+RUNNER = podman
+
 build:
-	podman build --tag $(IMAGE_NAME) .
+	$(RUNNER) build --tag $(IMAGE_NAME) .
 
 run:
-	podman run -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
+	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
 attach:
-	podman run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
+	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
 
 unit:
-	podman run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
+	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
 
 coverage:
-	podman run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
+	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
 
 purge:
-	podman rm $(CONTAINER_NAME)
-	podman stop $(CONTAINER_NAME)
+	$(RUNNER) rm $(CONTAINER_NAME)
+	$(RUNNER) stop $(CONTAINER_NAME)
