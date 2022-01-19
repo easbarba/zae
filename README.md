@@ -80,9 +80,9 @@ Either run or inspect the container with:
 
     $ make run
 
-    $ make attach
+    $ make shell
 
-Once you are done, just clean up with:
+Once done, just clean it up with:
 
     $ make purge
 

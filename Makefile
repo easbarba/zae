@@ -6,14 +6,27 @@ CONTAINER_NAME = $(NAME)_dev
 
 # set to docker, if you dare.
 RUNNER = podman
+COMPOSER = podman-compose
+
+cbuild:
+	$(COMPOSER) build
+
+crun:
+	$(COMPOSER) up --detach --build --force-recreate
+
+cshell:
+	$(COMPOSER) run --rm distro sh
+
+cstop:
+	$(COMPOSER) stop
 
 build:
 	$(RUNNER) build --tag $(IMAGE_NAME) .
 
 run:
-	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
+	$(RUNNER) run -p 3000:3000 -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
-attach:
+shell:
 	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
 
 unit:

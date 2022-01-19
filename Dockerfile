@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM docker.io/node:lts-alpine
 
 ENV APP "/app "
 ENV LOG "/root/.local/share/distro"
