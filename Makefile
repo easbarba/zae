@@ -30,10 +30,10 @@ shell:
 	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
 
 unit:
-	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
+	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
 
 coverage:
-	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
+	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
 
 purge:
 	$(RUNNER) rm $(CONTAINER_NAME)
