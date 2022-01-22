@@ -1,17 +1,17 @@
-FROM docker.io/node:lts-alpine
+FROM golang:alpine3.15
 
-ENV APP "/app "
+ENV APP "/app"
 ENV LOG "/root/.local/share/distro"
 
 RUN mkdir -p $LOG && touch $LOG/misc.log
 
-COPY package.json package-lock.json $APP/
-COPY examples/ /root/.config/distrojs
+# COPY package.json package-lock.json $APP/
+COPY examples/ /root/.config/distro
 
 WORKDIR $APP/
 
-RUN npm install
+# RUN npm install
 
 COPY . $APP/
 
-CMD ["bin/distro.js", "system"]
+CMD ["go", "main"]

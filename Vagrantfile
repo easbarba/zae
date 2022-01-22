@@ -8,5 +8,5 @@ Vagrant.configure("2") do |config|
   config.vm.provider "libvirt" do |vb|
     vb.memory = "4096"
   end
-  config.vm.provision "shell", path: "devops/vagrant/node.sh"
+  config.vm.provision "shell", path: "devops/vagrant/go.sh"
 end

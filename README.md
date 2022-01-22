@@ -89,9 +89,9 @@ Once done, just clean it up with:
 ## Configuration
 
 `distro` will look for configuration files containing packagers commands at
-`$XDG_CONFIG_HOME/distrojs`.
+`$XDG_CONFIG_HOME/distro`.
 
--> `$XDG_CONFIG_HOME/distrojs/apt.yml`
+-> `$XDG_CONFIG_HOME/distro/apt.yml`
 
 ```yaml
 exec: /usr/bin/apt
