@@ -1,17 +1,9 @@
-FROM golang:alpine3.15
+FROM ruby:2.7.5
 
-ENV APP "/app"
-ENV LOG "/root/.local/share/distro"
+COPY Gemfile Gemfile.lock distro.gemspec /app/
+WORKDIR /app/
 
-RUN mkdir -p $LOG && touch $LOG/misc.log
+RUN gem install bundler -v 2.3.3 && bundle install
 
-# COPY package.json package-lock.json $APP/
 COPY examples/ /root/.config/distro
-
-WORKDIR $APP/
-
-# RUN npm install
-
-COPY . $APP/
-
-CMD ["go", "main"]
+COPY . /app/

@@ -1,40 +1,33 @@
 .DEFAULT_GOAL := build
 
-NAME = distro
-IMAGE_NAME = $(USER)/$(NAME)
-CONTAINER_NAME = $(NAME)_dev
+fmt:
+	rufo lib/*
+.PHONY:fmt
 
-# set to docker, if you dare.
-RUNNER = podman
-COMPOSER = podman-compose
+lint: fmt
+	reek lib/*
 
-cbuild:
-	$(COMPOSER) build
+install:
+	gem build distro.gemspec
+	gem install ./distro-*.gem
 
-crun:
-	$(COMPOSER) up --detach --build --force-recreate
+clean:
+	rm -rf "$PWD/.gems"
+	rm -rf "$PWD/.cache"
+.PHONY:clean
 
-cshell:
-	$(COMPOSER) run --rm distro sh
+deps:
+	gem install bundler --no-document
+	bundle check || bin/setup
 
-cstop:
-	$(COMPOSER) stop
+audit:
+	bundle exec bundle audit check --update # refresh the database, analyze our Gemfile.lock after any vulnerable versions.
 
-build:
-	$(RUNNER) build --tag $(IMAGE_NAME) .
+c-build:
+	docker-compose build
 
-run:
-	$(RUNNER) run -p 3000:3000 -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
+c-run:
+	docker-compose run --rm --service-ports ruby_dev
 
-shell:
-	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
-
-unit:
-	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
-
-coverage:
-	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
-
-purge:
-	$(RUNNER) rm $(CONTAINER_NAME)
-	$(RUNNER) stop $(CONTAINER_NAME)
+c-down:
+	docker-compose stop

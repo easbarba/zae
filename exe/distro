@@ -1,0 +1,171 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/distro'
+
+require 'gli'
+require 'dry-container'
+
+class App
+  extend GLI::App
+
+  program_desc 'An one-do-it-all porcelain front-end of the most used Distro Linux package managers.'
+
+  version Distro::VERSION
+
+  subcommand_option_handling :normal
+  arguments :strict
+
+  desc 'Describe some switch here'
+  switch [:s,:switch]
+
+  desc 'Describe some flag here'
+  default_value 'the default'
+  arg_name 'The name of the argument'
+  flag [:f,:flagname]
+
+  def self.services
+    container = Dry::Container.new
+    container.register :utils, Cejo::Services::Utils.new
+  end
+
+  UTILS = services.resolve(:utils)
+  BASE = Cejo::Distro::Main.new(UTILS)
+
+  desc 'Install a Package from Repositories'
+  arg_name 'Describe arguments to install here'
+  command :install do |c|
+    # c.desc 'Describe a switch to install'
+    # c.switch :s
+
+    # c.desc 'Describe a flag to install'
+    # c.default_value 'default'
+    # c.flag :f
+    c.arg 'arguments'
+    c.action do |_, _, args|
+      BASE.tap do |x|
+        x.action = :install
+        x.arguments = args
+      end.run
+    end
+  end
+
+  desc 'Remove One or More Installed Packages'
+  arg_name 'Describe arguments to remove here'
+  command :remove do |c|
+    c.action do |_, _, args|
+      BASE.tap do |x|
+        x.action = :remove
+        x.arguments = args
+      end.run
+    end
+  end
+
+  desc 'Find a Package'
+  arg_name 'Describe arguments to search here'
+  command :search do |c|
+    c.action do |_, _, args|
+      BASE.tap do |x|
+        x.action = :search
+        x.arguments = args
+      end.run
+    end
+  end
+
+  desc 'Update Package Lists'
+  arg_name 'Describe arguments to update here'
+  command :update do |c|
+    c.action do
+      BASE.tap do |x|
+        x.action = :update
+      end.run
+    end
+  end
+
+  desc 'Upgrade Installed Packages'
+  arg_name 'Describe arguments to upgrade here'
+  command :upgrade do |c|
+    c.action do
+      BASE.tap do |x|
+        x.action = :upgrade
+      end.run
+    end
+  end
+
+  desc 'Clean system residual packages dependencies'
+  arg_name 'Describe arguments to clean here'
+  command :clean do |c|
+    c.action do |_, _, args|
+      BASE.tap do |x|
+        x.action = :clean
+        x.arguments = args
+      end.run
+    end
+  end
+
+  desc 'Download package binary'
+  arg_name 'Describe arguments to download here'
+  command :download do |c|
+    c.action do |_, _, args|
+      BASE.tap do |x|
+        x.action = :download
+        x.arguments = args
+      end.run
+    end
+  end
+
+  desc 'List installed packages'
+  arg_name 'Describe arguments to installed here'
+  command :installed do |c|
+    c.action do |_, _, args|
+      BASE.tap do |x|
+        x.action = :installed
+        x.arguments = args
+      end.run
+    end
+  end
+
+  desc 'View Info About a Specific Package'
+  arg_name 'Describe arguments to info here'
+  command :info do |c|
+    c.action do |_, _, args|
+      BASE.tap do |x|
+        x.action = :info
+        x.arguments = args
+      end.run
+    end
+  end
+
+  desc 'Fix system issues'
+  arg_name 'Describe arguments to fix here'
+  command :fix do |c|
+    c.action do |_, _, args|
+      BASE.tap do |x|
+        x.action = :fix
+        x.arguments = args
+      end.run
+    end
+  end
+
+  pre do |global,command,options,args|
+    # Pre logic here
+    # Return true to proceed; false to abort and not call the
+    # chosen command
+    # Use skips_pre before a command to skip this block
+    # on that command only
+    true
+  end
+
+  post do |global,command,options,args|
+    # Post logic here
+    # Use skips_post before a command to skip this
+    # block on that command only
+  end
+
+  on_error do |exception|
+    # Error logic here
+    # return false to skip default error handling
+    true
+  end
+end
+
+exit App.run(ARGV)
