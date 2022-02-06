@@ -1,6 +1,6 @@
 # Distro
 
-Unified commands to manage system packages of distributions boxes.
+An extensible runner of distributions packages manager commands.
 
 <pre>
 Ain't ya just annoyed of having to recall all those different commands of every
