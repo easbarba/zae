@@ -1,40 +1,60 @@
 .DEFAULT_GOAL := build
 
-NAME = distro
-IMAGE_NAME = $(USER)/$(NAME)
-CONTAINER_NAME = $(NAME)_dev
+fmt:
+	go fmt ./...
+.PHONY:fmt
 
-# set to docker, if you dare.
-RUNNER = podman
-COMPOSER = podman-compose
+lint: fmt
+	golint ./...
+.PHONY:lint
 
-cbuild:
-	$(COMPOSER) build
+vet: fmt
+	go vet ./...
+.PHONY:vet
 
-crun:
-	$(COMPOSER) up --detach --build --force-recreate
+build: vet
+	go build hello.go
+.PHONY:build
 
-cshell:
-	$(COMPOSER) run --rm distro sh
+test: vet
+	go test ./...
+.PHONY:test
 
-cstop:
-	$(COMPOSER) stop
+# NAME = distro
+# IMAGE_NAME = $(USER)/$(NAME)
+# CONTAINER_NAME = $(NAME)_dev
 
-build:
-	$(RUNNER) build --tag $(IMAGE_NAME) .
+# # you may set it to your favorite container manager/builder
+# RUNNER = docker
+# COMPOSER = docker-compose
 
-run:
-	$(RUNNER) run -p 3000:3000 -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
+# cbuild:
+# 	$(COMPOSER) build
 
-shell:
-	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
+# crun:
+# 	$(COMPOSER) up --detach --build --force-recreate
 
-unit:
-	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
+# cshell:
+# 	$(COMPOSER) run --rm distro sh
 
-coverage:
-	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
+# cstop:
+# 	$(COMPOSER) stop
 
-purge:
-	$(RUNNER) rm $(CONTAINER_NAME)
-	$(RUNNER) stop $(CONTAINER_NAME)
+# build:
+# 	$(RUNNER) build --tag $(IMAGE_NAME) .
+
+# run:
+# 	$(RUNNER) run -p 3000:3000 -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
+
+# shell:
+# 	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
+
+# unit:
+# 	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
+
+# coverage:
+# 	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
+
+# purge:
+# 	$(RUNNER) rm $(CONTAINER_NAME)
+# 	$(RUNNER) stop $(CONTAINER_NAME)
