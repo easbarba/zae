@@ -9,7 +9,7 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "distro",
-	Short: "system packages management made easy. ",
+	Short: "an extensible runner of distributions packages manager commands.",
 	Long: `Ain't ya just annoyed of having to recall all those different commands of every
 distribution you happen to need to use? apt that, apk this, dnf those...
 goddamn!
