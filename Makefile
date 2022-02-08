@@ -1,5 +1,13 @@
 .DEFAULT_GOAL := build
 
+NAME = distro
+IMAGE_NAME = $(USER)/$(NAME)
+CONTAINER_NAME = $(NAME)_dev
+
+# you may set it to your favorite container manager/builder
+RUNNER = docker
+COMPOSER = docker-compose
+
 fmt:
 	go fmt ./...
 .PHONY:fmt
@@ -20,41 +28,33 @@ test: vet
 	go test ./...
 .PHONY:test
 
-# NAME = distro
-# IMAGE_NAME = $(USER)/$(NAME)
-# CONTAINER_NAME = $(NAME)_dev
+cbuild:
+	$(COMPOSER) build
 
-# # you may set it to your favorite container manager/builder
-# RUNNER = docker
-# COMPOSER = docker-compose
+crun:
+	$(COMPOSER) up --detach --build --force-recreate
 
-# cbuild:
-# 	$(COMPOSER) build
+cshell:
+	$(COMPOSER) run --rm distro sh
 
-# crun:
-# 	$(COMPOSER) up --detach --build --force-recreate
+cstop:
+	$(COMPOSER) stop
 
-# cshell:
-# 	$(COMPOSER) run --rm distro sh
+dbuild:
+	$(RUNNER) build --tag $(IMAGE_NAME) .
 
-# cstop:
-# 	$(COMPOSER) stop
+drun:
+	$(RUNNER) run -p 3000:3000 -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
-# build:
-# 	$(RUNNER) build --tag $(IMAGE_NAME) .
+dshell:
+	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
 
-# run:
-# 	$(RUNNER) run -p 3000:3000 -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
+dunit:
+	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
 
-# shell:
-# 	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
+dcoverage:
+	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
 
-# unit:
-# 	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
-
-# coverage:
-# 	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
-
-# purge:
-# 	$(RUNNER) rm $(CONTAINER_NAME)
-# 	$(RUNNER) stop $(CONTAINER_NAME)
+dpurge:
+	$(RUNNER) rm $(CONTAINER_NAME)
+	$(RUNNER) stop $(CONTAINER_NAME)
