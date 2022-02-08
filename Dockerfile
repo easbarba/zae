@@ -1,17 +1,17 @@
-FROM golang:alpine3.15
+FROM golang:1.17-alpine
 
-ENV APP "/app"
-ENV LOG "/root/.local/share/distro"
+ENV APP "/usr/src/app"
+# ENV LOG "/root/.local/share/distro"
 
-RUN mkdir -p $LOG && touch $LOG/misc.log
+# RUN mkdir -p $LOG && touch $LOG/misc.log
+COPY docs/examples/ /root/.config/distro
 
-# COPY package.json package-lock.json $APP/
-COPY examples/ /root/.config/distro
+# COPY go.mod go.sum $APP/
 
-WORKDIR $APP/
-
-# RUN npm install
+WORKDIR $APP
 
 COPY . $APP/
 
-CMD ["go", "main"]
+RUN go install
+
+CMD ["go", "run", "main.go"]
