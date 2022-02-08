@@ -120,6 +120,7 @@ as standalone package to follow the UNIX main rule: 'do one thing, well'.
 ## TODO
 
 - let user provide w/ additional options to commands (--options).
+- generate configuration template w/ name and executable location only.
 - support flatpak, guix and nix
 - --packager <PACKAGER> if more than one packager is available, but defaults to distro tradional ones. 
 - display information on the command being executable.
