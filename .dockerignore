@@ -17,4 +17,11 @@
 # Go workspace file
 go.work
 
+# tools
 .vagrant
+Vagrantfile
+ops
+
+# project
+LICENSE
+README.md
