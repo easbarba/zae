@@ -9,8 +9,11 @@ import (
 func TestConfigFolder(t *testing.T) {
 	home, _ := os.UserHomeDir()
 
+	configFolder := filepath.Join(home, ".config", "distro")
+	// TODO: if XDG_CONFIG_HOME is set to another location, point there instead.
+
 	got := ConfigFolder()
-	want := filepath.Join(home, ".config", "distro")
+	want := configFolder
 
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
