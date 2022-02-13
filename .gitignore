@@ -23,7 +23,7 @@ tmp/
 # Go workspace file
 go.work
 
-# artefacts
+# artifacts
 pak
 
 # ops
