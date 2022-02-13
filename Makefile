@@ -28,6 +28,9 @@ test:
 	go test ./...
 .PHONY:test
 
+install:
+  go install
+
 cbuild:
 	$(COMPOSER) build
 

@@ -14,11 +14,11 @@ where the dream of all tired UNIX power-user comes true.
 ## Usage
 
 ```sh
-pak install firefox emacs
+pak install git sed
 pak remove openjdk
 pak installed
-pak search '^node'
-pak search --options '--names-only' rust
+pak search '^erlang'
+pak search --options '--names-only' tmux
 pak --help
 ```
 
@@ -44,7 +44,7 @@ pak --help
 
 Get all needed dependencies and install in the system:
 
-    $ npm install & npm link
+    $ make install
 
 PS: you may need to set $PATH to find local packages.
 
