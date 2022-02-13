@@ -1,4 +1,4 @@
-module gitlab.com/easbarba/distro
+module gitlab.com/easbarba/pak
 
 go 1.17
 

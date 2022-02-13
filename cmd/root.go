@@ -8,13 +8,13 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "distro",
+	Use:   "pak",
 	Short: "an extensible runner of distributions packages manager commands.",
 	Long: `Ain't ya just annoyed of having to recall all those different commands of every
 distribution you happen to need to use? apt that, apk this, dnf those...
 goddamn!
 
-Look no further! we have here your solution to all your problems: distro,
+Look no further! we have here your solution to all your problems: pak,
 where the dream of all tired UNIX power-user comes true.`,
 	Version: "0.1",
 	// Uncomment the following line if your bare application
@@ -36,7 +36,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.distro.yaml)")
+	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.pak.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.

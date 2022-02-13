@@ -1,4 +1,4 @@
-package distro
+package pak
 
 import (
 	"os"
@@ -8,7 +8,7 @@ import (
 func ConfigFolder() string {
 	home, err := os.UserHomeDir()
 	result := ""
-	folderName := "distro"
+	folderName := "pak"
 
 	if err != nil {
 		panic(err)

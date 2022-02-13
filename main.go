@@ -1,6 +1,6 @@
 package main
 
-import "gitlab.com/easbarba/distro/cmd"
+import "gitlab.com/easbarba/pak/cmd"
 
 func main() {
 	cmd.Execute()

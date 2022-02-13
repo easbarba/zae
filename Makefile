@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := build
 
-NAME = distro
+NAME = pak
 IMAGE_NAME = $(USER)/$(NAME)
 CONTAINER_NAME = $(NAME)_dev
 
@@ -24,7 +24,7 @@ build: vet
 	go build hello.go
 .PHONY:build
 
-test: vet
+test:
 	go test ./...
 .PHONY:test
 
@@ -35,7 +35,7 @@ crun:
 	$(COMPOSER) up --detach --build --force-recreate
 
 cshell:
-	$(COMPOSER) run --rm distro sh
+	$(COMPOSER) run --rm pak sh
 
 cstop:
 	$(COMPOSER) stop

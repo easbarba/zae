@@ -1,4 +1,4 @@
-package distro
+package pak
 
 import (
 	"os"
@@ -8,14 +8,16 @@ import (
 
 func TestConfigFolder(t *testing.T) {
 	home, _ := os.UserHomeDir()
+	configFolder := filepath.Join(home, ".config", "pak")
 
-	configFolder := filepath.Join(home, ".config", "distro")
+	t.Run("check configuration folder location", func(t *testing.T) {
+		got := ConfigFolder()
+		want := configFolder
+
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
+
 	// TODO: if XDG_CONFIG_HOME is set to another location, point there instead.
-
-	got := ConfigFolder()
-	want := configFolder
-
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
 }

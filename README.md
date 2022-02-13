@@ -1,4 +1,4 @@
-# Distro
+# Pak
 
 An extensible runner of distributions packages manager commands.
 
@@ -7,19 +7,19 @@ Ain't ya just annoyed of having to recall all those different commands of every
 distribution you happen to need to use? apt that, apk this, dnf those...
 goddamn!
 
-Look no further! we have here your solution to all your problems: `distro`,
+Look no further! we have here your solution to all your problems: `pak`,
 where the dream of all tired UNIX power-user comes true.
 </pre>
 
 ## Usage
 
 ```sh
-distro install firefox emacs
-distro remove openjdk
-distro installed
-distro search '^node'
-distro search --options '--names-only' rust
-distro --help
+pak install firefox emacs
+pak remove openjdk
+pak installed
+pak search '^node'
+pak search --options '--names-only' rust
+pak --help
 ```
 
 ## Commands
@@ -52,19 +52,19 @@ PS: you may need to set $PATH to find local packages.
 
 In a fresh install or container, its easy to add new commands, one or multiple per time:
 
-`$ distro --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av'`
+`$ pak --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av'`
 
 Once a config with exec is added it even easier to add new commands:
 
-`$ distro --add --pkg 'emerge' --search '-s'`
+`$ pak --add --pkg 'emerge' --search '-s'`
 
 Overwrite one command with important options goes the same:
 
-`$ distro --add --pkg 'apt' --search 'search --names-only'`
+`$ pak --add --pkg 'apt' --search 'search --names-only'`
 
 Or even purge it all and start with your own commands:
 
-`$ distro --purge --pkg 'apt'`
+`$ pak --purge --pkg 'apt'`
 
 ## Container
 
@@ -88,10 +88,10 @@ Once done, just clean it up with:
 
 ## Configuration
 
-`distro` will look for configuration files containing packagers commands at
-`$XDG_CONFIG_HOME/distro`.
+`pak` will look for configuration files containing packagers commands at
+`$XDG_CONFIG_HOME/pak`.
 
--> `$XDG_CONFIG_HOME/distro/apt.yml`
+-> `$XDG_CONFIG_HOME/pak/apt.yml`
 
 ```yaml
 exec: /usr/bin/apt
@@ -114,7 +114,7 @@ user:
 
 ## History
 
-` distro` was a module of a super package called `cejo`, and later on extracted
+` pak` was a module of a super package called `cejo`, and later on extracted
 as standalone package to follow the UNIX main rule: 'do one thing, well'.
 
 ## TODO
