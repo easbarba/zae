@@ -5,16 +5,18 @@ import (
 	"path/filepath"
 )
 
+var folderName = "pak"
+var home, err = os.UserHomeDir()
+var homeConfigFolder = filepath.Join(home, ".config", folderName)
+
+// TODO: if XDG_CONFIG_HOME is set to another location, point there instead.
+
 func ConfigFolder() string {
-	home, err := os.UserHomeDir()
 	result := ""
-	folderName := "pak"
 
 	if err != nil {
 		panic(err)
 	}
-
-	homeConfigFolder := filepath.Join(home, ".config", folderName)
 
 	XDGFolder := os.Getenv("XDG_CONFIG_HOME")
 	XDGConfigFolder := filepath.Join(XDGFolder, folderName)
