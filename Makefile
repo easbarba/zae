@@ -4,32 +4,39 @@ NAME = pak
 IMAGE_NAME = $(USER)/$(NAME)
 CONTAINER_NAME = $(NAME)_dev
 
-# you may set it to your favorite container manager/builder
-RUNNER = docker
-COMPOSER = docker-compose
+# you may set to your favorite container manager
+RUNNER := docker
+COMPOSER := docker-compose
+
+# Project
 
 fmt:
-	go fmt ./...
+	go fmt $(go list ./...)
 .PHONY:fmt
 
 lint: fmt
-	golint ./...
+	golint $(go list ./...)
 .PHONY:lint
 
 vet: fmt
-	go vet ./...
+	go vet $(go list ./...)
 .PHONY:vet
 
-build: vet
-	go build hello.go
-.PHONY:build
-
 test:
-	go test ./...
+	go test -race -v $(go list ./...)
 .PHONY:test
 
+clean:
+	rm $(NAME)
+
+build: vet
+	go build -race -ldflags "-extldflags '-static'" -o pak cmd/pak/main.go
+.PHONY:build
+
 install:
-  go install
+	go install
+
+# Compose
 
 cbuild:
 	$(COMPOSER) build
@@ -45,6 +52,8 @@ cstop:
 
 dbuild:
 	$(RUNNER) build --tag $(IMAGE_NAME) .
+
+# Docker
 
 drun:
 	$(RUNNER) run -p 3000:3000 -it --name $(CONTAINER_NAME) $(IMAGE_NAME)

@@ -6,12 +6,10 @@ ENV APP "/usr/src/app"
 # RUN mkdir -p $LOG && touch $LOG/misc.log
 COPY docs/examples/ /root/.config/pak
 
-# COPY go.mod go.sum $APP/
+COPY . $APP/
 
 WORKDIR $APP
 
-COPY . $APP/
+RUN go get ./...
 
-RUN go install
-
-CMD ["go", "run", "main.go"]
+CMD ["go", "run", "cmd/pak/main.go"]
