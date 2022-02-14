@@ -1,9 +1,10 @@
-image: golang:
+image: golang:1.17-alpine
 
 variables:
   REPO_NAME: gitlab.com/easbarba/pak
 
 before_script:
+  - apk add build-base
   - mkdir -p $GOPATH/src/$(dirname $REPO_NAME)
   - ln -svf $CI_PROJECT_DIR $GOPATH/src/$REPO_NAME
   - cd $GOPATH/src/$REPO_NAME
@@ -22,8 +23,6 @@ format:
 
 compile:
   stage: build
-  before_script:
-    - apk add build-base
   script:
     - go build -race -ldflags "-extldflags '-static'" -o $CI_PROJECT_DIR/pak cmd/pak/main.go
   artifacts:
