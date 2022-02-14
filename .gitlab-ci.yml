@@ -1,4 +1,4 @@
-image: golang:latest
+image: golang:1.17.7-alpine
 
 variables:
   REPO_NAME: gitlab.com/easbarba/pak
