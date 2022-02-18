@@ -1,17 +1,22 @@
-FROM golang:bullseye
+FROM golang:bullseye as build
 
 ENV GO111MODULE=on
 ENV GOOS linux
 
-ENV APP "/usr/src/app"
-ENV LOG "/root/.local/share/pak"
-
-COPY docs/examples/ /root/.config/pak
-
+ENV APP /usr/src/app
 COPY . $APP/
-
 WORKDIR $APP
+RUN go build -race -ldflags "-extldflags '-static'" -o pak cmd/pak/main.go
 
-RUN go install ./...
+# -- PRODUCTION
 
-CMD ["go", "run", "cmd/pak/main.go"]
+FROM alpine
+
+COPY --from=build /usr/src/app/pak /usr/local/bin/pak
+RUN chmod +x /usr/local/bin/pak
+COPY docs/examples/*.yaml /root/.config/pak/
+
+CMD ["pak"]
+
+# ...
+# ENV LOG /root/.local/share/pak
