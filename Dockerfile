@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine
+FROM golang:bullseye
 
 ENV GO111MODULE=on
 ENV GOOS linux
