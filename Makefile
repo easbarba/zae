@@ -26,3 +26,5 @@ build: vet
 install:
 	go install
 
+coverage:
+	go test --cover ./...
