@@ -50,23 +50,20 @@ cshell:
 cstop:
 	$(COMPOSER) stop
 
-dbuild:
+# Runner
+
+rbuild:
 	$(RUNNER) build --tag $(IMAGE_NAME) .
 
-# Docker
+rrun:
+	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
-drun:
-	$(RUNNER) run -p 3000:3000 -it --name $(CONTAINER_NAME) $(IMAGE_NAME)
-
-dshell:
+rshell:
 	$(RUNNER) run -it --name $(CONTAINER_NAME) $(IMAGE_NAME) sh
 
-dunit:
-	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run test
+runit:
+	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) go test -race -v $(go list ./...)
 
-dcoverage:
-	$(RUNNER) run --name $(CONTAINER_NAME) $(IMAGE_NAME) npm run coverage
-
-dpurge:
+rpurge:
 	$(RUNNER) rm $(CONTAINER_NAME)
 	$(RUNNER) stop $(CONTAINER_NAME)

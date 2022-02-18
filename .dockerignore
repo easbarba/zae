@@ -21,7 +21,9 @@ go.work
 .vagrant
 Vagrantfile
 ops
-
-# project
+.gitlab-ci.yml
+.gitignore
+.editorconfig
 LICENSE
 README.md
+Makefile
