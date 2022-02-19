@@ -28,3 +28,4 @@ pak
 
 # ops
 .vagrant
+.go
