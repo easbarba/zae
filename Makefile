@@ -1,30 +1,34 @@
 .DEFAULT_GOAL := build
 
+PROJECT = pak
+OS :=linux
+ARCH := amd64
+
 fmt:
-	go fmt $(go list ./...)
-.PHONY:fmt
+	go fmt ./...
 
-lint: fmt
-	golint $(go list ./...)
-.PHONY:lint
+lint:
+	golangci-lint run --enable-all internal cmd/pak
 
-vet: fmt
-	go vet $(go list ./...)
-.PHONY:vet
+vet:
+	go vet ./...
+
+dep:
+	go mod download
 
 test:
-	go test -race -v $(go list ./...)
+	go test -race -v ./...
 .PHONY:test
 
 clean:
-	rm $(NAME)
+	go clean
 
-build: vet
-	go build -race -ldflags "-extldflags '-static'" -o pak cmd/pak/main.go
+build: test
+	GOARCH=$(ARCH) GOOS=$(OS) go build -race -ldflags "-extldflags '-static'" -o $(PROJECT) cmd/pak/main.go
 .PHONY:build
 
 install:
 	go install
 
 coverage:
-	go test --cover ./...
+	go test --cover ./... -coverprofile=coverage.out
