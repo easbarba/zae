@@ -1,4 +1,4 @@
-FROM golang:1.17-bullseye as builder
+FROM golang:1.17-alpine3.14 as builder
 LABEL maintainer="EAS Barbosa"
 
 WORKDIR /app
@@ -15,7 +15,7 @@ RUN go build -race -ldflags "-extldflags '-static'" -o pak cmd/pak/main.go
 
 # ---
 
-FROM debian:bullseye-slim
+FROM golang:1.17-alpine3.14
 
 COPY --from=builder /app/pak /usr/local/bin/pak
 RUN chmod +x /usr/local/bin/pak
