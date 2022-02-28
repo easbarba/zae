@@ -5,14 +5,16 @@ import (
 	"path/filepath"
 )
 
-var folderName = "pak"
-var home, err = os.UserHomeDir()
-var homeConfigFolder = filepath.Join(home, ".config", folderName)
+var (
+	folderName       = "pak"
+	home, err        = os.UserHomeDir()
+	homeConfigFolder = filepath.Join(home, ".config", folderName)
+)
 
 // TODO: if XDG_CONFIG_HOME is set to another location, point there instead.
 
 func ConfigFolder() string {
-	result := ""
+	var result string
 
 	if err != nil {
 		panic(err)
