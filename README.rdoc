@@ -1,6 +1,5 @@
-= distro
+= pak
 
 Describe your project here
 
-:include:distro.rdoc
-
+:include:pak.rdoc

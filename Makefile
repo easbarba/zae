@@ -8,8 +8,8 @@ lint: fmt
 	reek lib/*
 
 install:
-	gem build distro.gemspec
-	gem install ./distro-*.gem
+	gem build pak.gemspec
+	gem install ./pak-*.gem
 
 clean:
 	rm -rf "$PWD/.gems"

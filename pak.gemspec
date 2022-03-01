@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name = 'distro'
+  spec.name = 'pak'
   spec.version = '0.2.0'
   spec.authors = ['easbarba']
-  spec.email = ['easbarba@pm.me']
 
-  spec.summary = 'Porcelain front-end of Linux Distro package managers.'
+  spec.summary = 'a handy runner of distributions packages manager commands'
   # spec.description   = "TODO: Write a longer description or delete this line."
-  spec.homepage = 'https://git.sr.ht/~easbarba/distro'
+  spec.homepage = 'https://github.com/easbarba/pak'
   spec.required_ruby_version = '>= 2.7.5'
-  spec.license = 'GPL-3.0'
+  spec.license = 'Apache-2.0'
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'https://mygemserver.com'"
 

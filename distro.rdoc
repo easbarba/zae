@@ -1,5 +1,0 @@
-= distro
-
-Generate this with
-    distro _doc
-After you have described your command line interface

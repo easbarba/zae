@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'distro'
+require 'pak'
 
 require 'spec_helper'
 
-module Distro
-  RSpec.describe 'Distro' do
+module Pak
+  RSpec.describe 'Pak' do
     context 'main caller' do
-      let(:main) { Cejo::Distro::Main.new(utils) }
+      let(:main) { Pak::Main.new(utils) }
       let(:arguments) { 'fonts-hack' }
 
       let(:utils) {

@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-require 'distro'
+require 'pak'
 
 require 'spec_helper'
 
-module Distro
-  RSpec.describe 'Distro' do
+module Pak
+  RSpec.describe 'Pak' do
     context 'Translate Action' do
-      let(:action) { Cejo::Distro::TranslateAction }
+      let(:action) { Pak::TranslateAction }
 
       it 'has the real action' do
         commands = {
           apt: { autoremove: 'autoremove' },
-          dnf: { autoremove: 'autoremove' },
+          dnf: { autoremove: 'autoremove' }
         }
 
         real_action = action.real_action(commands, :dnf, :autoremove)

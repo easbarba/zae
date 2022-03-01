@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/distro'
+require_relative '../lib/pak'
 
 require 'gli'
 require 'dry-container'
@@ -8,28 +8,28 @@ require 'dry-container'
 class App
   extend GLI::App
 
-  program_desc 'An one-do-it-all porcelain front-end of the most used Distro Linux package managers.'
+  program_desc 'a handy runner of distributions packages manager commands. '
 
-  version Distro::VERSION
+  version Pak::VERSION
 
   subcommand_option_handling :normal
   arguments :strict
 
   desc 'Describe some switch here'
-  switch [:s,:switch]
+  switch [:s, :switch]
 
   desc 'Describe some flag here'
   default_value 'the default'
   arg_name 'The name of the argument'
-  flag [:f,:flagname]
+  flag [:f, :flagname]
 
   def self.services
     container = Dry::Container.new
-    container.register :utils, Cejo::Services::Utils.new
+    container.register :utils, Pak::Utils.new
   end
 
   UTILS = services.resolve(:utils)
-  BASE = Cejo::Distro::Main.new(UTILS)
+  BASE = Pak::Main.new(UTILS)
 
   desc 'Install a Package from Repositories'
   arg_name 'Describe arguments to install here'
@@ -146,7 +146,7 @@ class App
     end
   end
 
-  pre do |global,command,options,args|
+  pre do |global, command, options, args|
     # Pre logic here
     # Return true to proceed; false to abort and not call the
     # chosen command
@@ -155,7 +155,7 @@ class App
     true
   end
 
-  post do |global,command,options,args|
+  post do |global, command, options, args|
     # Post logic here
     # Use skips_post before a command to skip this
     # block on that command only
