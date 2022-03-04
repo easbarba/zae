@@ -1,5 +1,0 @@
-= pak
-
-Describe your project here
-
-:include:pak.rdoc

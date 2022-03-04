@@ -1,5 +1,0 @@
-= pak
-
-Generate this with
-    pak _doc
-After you have described your command line interface
