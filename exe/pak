@@ -3,26 +3,18 @@
 require_relative '../lib/pak'
 
 require 'gli'
-require 'dry-container'
+
+BASE = Pak::Main.new(Pak::Utils.new)
 
 # Cli main parser
 class Cli
   extend GLI::App
 
-  program_desc 'a handy runner of distributions packages manager commands. '
-
-  version Pak::VERSION
-
   subcommand_option_handling :normal
   arguments :strict
 
-  def self.services
-    container = Dry::Container.new
-    container.register :utils, Pak::Utils.new
-  end
-
-  UTILS = services.resolve(:utils)
-  BASE = Pak::Main.new(UTILS)
+  program_desc 'a handy runner of distributions packages manager commands. '
+  version Pak::VERSION
 
   desc 'install package(s) from repositories'
   arg_name 'package(s) name'

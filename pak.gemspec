@@ -33,7 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rufo', '~> 0.12.0'
 
   # runtime deps
-  spec.add_runtime_dependency 'dry-auto_inject', '~> 0.7.0'
-  spec.add_runtime_dependency 'dry-container', '~> 0.7.2'
   spec.add_runtime_dependency('gli', '~> 2.20.0')
 end
