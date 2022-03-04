@@ -42,11 +42,9 @@ pak --help
 
 ## Installation
 
-Get all needed dependencies and install in the system:
+Get all needed dependencies and install with:
 
     $ make install
-
-PS: you may need to set $PATH to find local packages.
 
 ## Commands: add, overwrite, append...
 
@@ -68,23 +66,7 @@ Or even purge it all and start with your own commands:
 
 ## Container
 
-Lets build as always: 
-
-    $ make build
-
-Make sure everything is smooth and sounding:
-
-    $ make test
-
-Either run or inspect the container with:
-
-    $ make run
-
-    $ make shell
-
-Once done, just clean it up with:
-
-    $ make purge
+`pak` latest version is available at docker hub: `easbarbosa/pak:latest`
 
 ## Configuration
 
