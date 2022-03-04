@@ -24,8 +24,8 @@ class Cli
   UTILS = services.resolve(:utils)
   BASE = Pak::Main.new(UTILS)
 
-  desc 'Install a Package from Repositories'
-  arg_name 'Describe arguments to install here'
+  desc 'install package(s) from repositories'
+  arg_name 'package(s) name'
   command :install do |c|
     c.arg 'arguments'
     c.action do |_, _, args|
@@ -36,8 +36,8 @@ class Cli
     end
   end
 
-  desc 'Remove One or More Installed Packages'
-  arg_name 'Describe arguments to remove here'
+  desc 'remove one or more installed packages'
+  arg_name 'package(s) name'
   command :remove do |c|
     c.action do |_, _, args|
       BASE.tap do |x|
@@ -47,8 +47,8 @@ class Cli
     end
   end
 
-  desc 'Find a Package'
-  arg_name 'Describe arguments to search here'
+  desc 'search for matching packages of term'
+  arg_name 'package name'
   command :search do |c|
     c.action do |_, _, args|
       BASE.tap do |x|
@@ -58,8 +58,8 @@ class Cli
     end
   end
 
-  desc 'Update Package Lists'
-  arg_name 'Describe arguments to update here'
+  desc 'update packages database'
+  arg_name ''
   command :update do |c|
     c.action do
       BASE.tap do |x|
@@ -68,8 +68,8 @@ class Cli
     end
   end
 
-  desc 'Upgrade Installed Packages'
-  arg_name 'Describe arguments to upgrade here'
+  desc 'upgrade installed packages'
+  arg_name ''
   command :upgrade do |c|
     c.action do
       BASE.tap do |x|
@@ -78,8 +78,8 @@ class Cli
     end
   end
 
-  desc 'Clean system residual packages dependencies'
-  arg_name 'Describe arguments to clean here'
+  desc 'clean system residual packages dependencies'
+  arg_name ''
   command :clean do |c|
     c.action do |_, _, args|
       BASE.tap do |x|
@@ -89,8 +89,8 @@ class Cli
     end
   end
 
-  desc 'Download package binary'
-  arg_name 'Describe arguments to download here'
+  desc 'download package binary'
+  arg_name 'package name'
   command :download do |c|
     c.action do |_, _, args|
       BASE.tap do |x|
@@ -100,8 +100,8 @@ class Cli
     end
   end
 
-  desc 'List installed packages'
-  arg_name 'Describe arguments to installed here'
+  desc 'list installed packages'
+  arg_name ''
   command :installed do |c|
     c.action do |_, _, args|
       BASE.tap do |x|
@@ -111,8 +111,8 @@ class Cli
     end
   end
 
-  desc 'View Info About a Specific Package'
-  arg_name 'Describe arguments to info here'
+  desc 'view info about a specific package'
+  arg_name 'package name'
   command :info do |c|
     c.action do |_, _, args|
       BASE.tap do |x|
@@ -122,8 +122,8 @@ class Cli
     end
   end
 
-  desc 'Fix system issues'
-  arg_name 'Describe arguments to fix here'
+  desc 'fix system package manager issues'
+  arg_name ''
   command :fix do |c|
     c.action do |_, _, args|
       BASE.tap do |x|

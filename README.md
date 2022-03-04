@@ -24,21 +24,21 @@ pak --help
 
 ## Commands
 
-| command   | ->  | information                                         |
-| --------- | :-: | --------------------------------------------------- |
-| clean     | cl  | clean system residual packages dependencies         |
-| deps      | de  | get package system dependencies to be built by user |
-| depends   | dp  | get package system dependencies to be built by user |
-| download  | dl  | download package binary                             |
-| fix       | fx  | fix system issues                                   |
-| help      | hp  | Shows a list of commands or help for one command    |
-| info      | if  | View Info About a Specific Package                  |
-| install   | in  | install package(s) from repositories                |
-| installed | id  | list all installed packages on system               |
-| remove    | rm  | remove One or More Installed Packages               |
-| search    | sc  | find a Package                                      |
-| update    | ud  | update Package Lists                                |
-| upgrade   | up  | upgrade Installed Packages                          |
+| command   | -> | information                                      |
+|-----------|:--:|--------------------------------------------------|
+| clean     | cl | clean system residual packages dependencies      |
+| deps      | de | install dependencies packages of package         |
+| depends   | dp | list all dependencies of package                 |
+| download  | dl | download package binary                          |
+| fix       | fx | fix system package manager issues                |
+| help      | hp | shows a list of commands or help for one command |
+| info      | if | view info about a specific package               |
+| install   | in | install package(s) from repositories             |
+| installed | id | list all installed packages on system            |
+| remove    | rm | remove one or more installed packages            |
+| search    | sc | search for matching packages of term             |
+| update    | ud | update packages database                         |
+| upgrade   | up | upgrade installed packages                       |
 
 ## Installation
 
