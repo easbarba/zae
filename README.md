@@ -1,6 +1,6 @@
 # Pak
 
-An extensible runner of distributions packages manager commands.
+A handy runner of distributions packages manager commands. 
 
 <pre>
 Ain't ya just annoyed of having to recall all those different commands of every
@@ -70,8 +70,7 @@ Or even purge it all and start with your own commands:
 
 ## Configuration
 
-`pak` will look for configuration files containing packagers commands at
-`$XDG_CONFIG_HOME/pak`.
+`pak` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/pak`.
 
 -> `$XDG_CONFIG_HOME/pak/apt.yml`
 
@@ -95,12 +94,13 @@ user:
 ```
 
 ## Ruby 3
-  Pak is built and tested against Ruby 3 but should do fine with Ruby 2.7 and early major version, as, for now, it wont be using unique features.
+  `pak` is built and tested against Ruby 3 but should do fine with Ruby 2.7 and
+  early major version, as, for now, it wont be using unique features.
 
 
 ## History
 
-` pak` was a module of a super package called `cejo`, and later on extracted
+`pak` was a module of a super package called `cejo`, and later on extracted
 as standalone package to follow the UNIX main rule: 'do one thing, well'.
 
 ## TODO
