@@ -112,6 +112,10 @@ user:
   version: version
 ```
 
+## Ruby 3
+  Pak is built and tested against Ruby 3 but should do fine with Ruby 2.7 and early major version, as, for now, it wont be using unique features.
+
+
 ## History
 
 ` pak` was a module of a super package called `cejo`, and later on extracted
@@ -132,7 +136,10 @@ as standalone package to follow the UNIX main rule: 'do one thing, well'.
 - read-only by default after cli modifications?
 - simulate dry-run.
 - regexp.
+- check if config file exist, broken symlink or is empty
+- only parse found executable commands
 - non-safe mode.
+- major rewrite based on ansible findings
 
 ## License
 

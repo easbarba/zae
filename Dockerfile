@@ -1,9 +1,15 @@
-FROM ruby:2.7.5
+FROM ruby:3.1.1-alpine3.15
 
-COPY Gemfile Gemfile.lock pak.gemspec /app/
-WORKDIR /app/
+WORKDIR /usr/src/app
 
-RUN gem install bundler -v 2.3.3 && bundle install
+COPY Gemfile pak.gemspec ./
 
-COPY examples/ /root/.config/pak
-COPY . /app/
+ENV BUNDLER_VERSION 2.3.8
+RUN gem install bundler -v $BUNDLER_VERSION && bundle install
+
+COPY examples/*.yaml /root/.config/pak/
+COPY . .
+
+
+CMD ["exe/pak"]
+
