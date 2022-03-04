@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
-# a handy runner of distributions packages manager commands.
 module Pak
-  # Main
+  # Entry point of project
   class Main
     attr_reader :utils
 

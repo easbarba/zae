@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Pak
   # Translate generic action into system real action
   class TranslateAction

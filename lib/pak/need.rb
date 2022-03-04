@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 module Pak
-  # Need x
+  # Action need privilegies
   class Need
     attr_reader :action
 

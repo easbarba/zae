@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-# TODO: only parse found executable commands
-
 module Pak
   # Objectfy commands parsed
   class ParsedCommands

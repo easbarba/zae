@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 module Pak
-  # Base x
+  # Commands inspection
   class Commands
     attr_reader :parsed_commands
 
