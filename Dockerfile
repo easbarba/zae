@@ -7,7 +7,7 @@ COPY Gemfile pak.gemspec ./
 ENV BUNDLER_VERSION 2.3.8
 RUN gem install bundler -v $BUNDLER_VERSION && bundle install
 
-COPY examples/*.yaml /root/.config/pak/
+COPY docs/config_examples/*.yaml /root/.config/pak/
 COPY . .
 
 
