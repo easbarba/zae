@@ -1,15 +1,19 @@
 .DEFAULT_GOAL := install
 
 fmt:
-	rufo lib/*
+	bundle exec rufo lib/*
 .PHONY:fmt
 
-lint: fmt
-	reek lib/*
+lint:
+	bundle exec reek lib/*
+
+test:
+	bundle exec rspec spec
+.PHONY:test
 
 deps:
 	gem install bundler --no-document
 	bundle check || bin/setup
 
 install: deps
-	rake install
+	bundle exec rake install
