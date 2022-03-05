@@ -93,10 +93,8 @@ user:
   version: version
 ```
 
-## Ruby 3
-  `pak` is built and tested against Ruby 3 but should do fine with Ruby 2.7 and
-  early major version, as, for now, it wont be using unique features.
-
+## Java 17
+  `pak` is built and tested against Java 17 but should run fine with 11.
 
 ## History
 
