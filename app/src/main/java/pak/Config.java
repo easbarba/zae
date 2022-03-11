@@ -9,4 +9,13 @@ public class Config {
 
         return homeConf;
     }
+
+    // distro which executable was found in user set location
+    String found();
+
+    // all distro configurations
+    String[] all();
+
+    // distro executable
+    String Exec();
 }
