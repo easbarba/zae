@@ -17,5 +17,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.10'
   spec.add_development_dependency 'rufo', '~> 0.13.0'
 
-  spec.add_runtime_dependency('gli', '~> 2.20.0')
+  spec.add_runtime_dependency 'gli', '~> 2.20.0'
 end
