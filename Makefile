@@ -8,7 +8,7 @@ lint:
 	bundle exec reek lib/*
 
 test:
-	bundle exec rspec spec
+	bundle exec rake
 .PHONY:test
 
 deps:

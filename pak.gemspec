@@ -13,7 +13,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.3'
+  spec.add_development_dependency 'reek', '~> 6.1'
   spec.add_development_dependency 'rspec', '~> 3.10'
+  spec.add_development_dependency 'rufo', '~> 0.13.0'
 
   spec.add_runtime_dependency('gli', '~> 2.20.0')
 end
