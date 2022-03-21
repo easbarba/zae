@@ -50,19 +50,19 @@ Get all needed dependencies and install with:
 
 In a fresh install or container, its easy to add new commands, one or multiple per time:
 
-`$ pak --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av'`
+    $ pak --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av'
 
 Once a config with exec is added it even easier to add new commands:
 
-`$ pak --add --pkg 'emerge' --search '-s'`
+    $ pak --add --pkg 'emerge' --search '-s'
 
 Overwrite one command with important options goes the same:
 
-`$ pak --add --pkg 'apt' --search 'search --names-only'`
+    $ pak --add --pkg 'apt' --search 'search --names-only'
 
 Or even purge it all and start with your own commands:
 
-`$ pak --purge --pkg 'apt'`
+    $ pak --purge --pkg 'apt'
 
 ## Container
 
@@ -70,33 +70,31 @@ Or even purge it all and start with your own commands:
 
 ## Configuration
 
-`pak` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/pak`.
+`pak` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/pak`:
 
--> `$XDG_CONFIG_HOME/pak/apt.yml`
+`$XDG_CONFIG_HOME/pak/apt.yml`
 
 ```yaml
 exec: /usr/bin/apt
-super:
-  update: update
-  upgrade: upgrade
-  deps: build-dep
+become:
   clean: autoremove
-  depends: depends
-  install: install
-  remove: remove
+  deps: build-dep
   download: download
   fix: install -f
+  install: install
+  remove: remove
+  update: update
+  upgrade: upgrade
 user:
-  search: search
-  help: help
+  depends: depends
   info: show
+  help: help
+  search: search
   version: version
 ```
 
 ## Ruby 3
-  `pak` is built and tested against Ruby 3 but should do fine with Ruby 2.7 and
-  early major version, as, for now, it wont be using unique features.
-
+  `pak` is built and tested against Ruby 3 but should run correctly with early major versions.
 
 ## History
 
@@ -121,7 +119,7 @@ as standalone package to follow the UNIX main rule: 'do one thing, well'.
 - check if config file exist, broken symlink or is empty
 - only parse found executable commands
 - non-safe mode.
-- major rewrite based on ansible findings
+- major rewrite based on ansible features
 
 ## License
 
