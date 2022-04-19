@@ -1,22 +1,26 @@
 module Pak
-  # Commands inspection
+  # All Commands available
   class Commands
-    attr_reader :parsed_commands
+    attr_reader :packager
 
-    def initialize(parsed_commands)
-      @parsed_commands = parsed_commands
+    def initialize(packager)
+      @packager = packager
     end
 
     def all
-      parsed_commands
+      @packager.slice :become, :user
+    end
+
+    def become
+      @packager[:become]
+    end
+
+    def user
+      @packager[:user]
     end
 
     def any?
-      parsed_commands.any?
-    end
-
-    def packagers
-      all.keys
+      @packager.any?
     end
   end
 end

@@ -22,7 +22,7 @@ module Pak
 
     # configuration default folder location
     def folder
-      x = Pathname.new(File.join(Dir.home, '.config', 'pak'))
+      x = Pathname.new(File.join(Dir.home, '.config', 'pak2'))
       x if x.exist?
     end
 
