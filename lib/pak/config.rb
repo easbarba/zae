@@ -1,3 +1,5 @@
+require 'pathname'
+
 module Pak
   # Load configuration files
   class Config
@@ -7,27 +9,37 @@ module Pak
       end
     end
 
+    # all projects found
     attr_accessor :projects
+
+    # all availables configuration executable names
     attr_reader :keys
 
     def initialize
-      @keys = keys
-      @projects = {}
-      @projects = configs_found
+      @projects = all
+      @keys = @projects.keys
+    end
+
+    # configuration default folder location
+    def folder
+      x = Pathname.new(File.join(Dir.home, '.config', 'pak'))
+      x if x.exist?
     end
 
     # package manager executable which is present
     def executable
-      keys.find { |exec| which? exec }.to_sym
+      keys.find { |exec| Config.which? exec }.to_sym
+    end
+
+    def found
+      @projects[executable]
     end
 
     alias active executable
 
-    # configuration folder location
-    def folder; end
-
     private
 
+    #  check if xdg config is set and defaults to it to find configuration fiels
     def xdg_config_folder; end
 
     # Load file with famous serialization formats
@@ -38,10 +50,14 @@ module Pak
 
     # Get all Configuration files
     def all
-      config_folder.each_child do |file|
-        name = file.basename.sub_ext('').to_s.to_sym
-        @projects[name] = load_config(file, ext)
+      p = {}
+
+      folder.each_child do |file|
+        name = file.sub_ext('').basename.to_s.to_sym
+        p[name] = load_config(file)
       end
+
+      p
     end
   end
 end
