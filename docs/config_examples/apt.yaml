@@ -1,16 +1,20 @@
+---
 exec: /usr/bin/apt
-super:
-  update: update
-  upgrade: upgrade
-  deps: build-dep
+become:
   clean: autoremove
-  depends: depends
-  install: install
-  remove: remove
+  deps: build-dep
   download: download
   fix: install -f
+  install: install
+  remove: remove
+  update: update
+  upgrade: upgrade
+  sysupgrade: dist-upgrade
+  builddep: build-dep
 user:
-  search: search
-  help: help
+  depends: depends
   info: show
+  help: help
+  search: search
   version: version
+  installed: list --installed
