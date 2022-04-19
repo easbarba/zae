@@ -1,12 +1,10 @@
 module Pak
   # Entry point of project
   class Main
-    attr_reader :utils
-
+    # x
     attr_accessor :action, :arguments
 
-    def initialize(utils)
-      @utils = utils
+    def initialize
       @action = action
     end
 
@@ -19,7 +17,7 @@ module Pak
     end
 
     def packager
-      current_packager = CurrentPackager.new utils, commands.keys
+      current_packager = CurrentPackager.new(commands.keys)
       current_packager.packager
     end
 

@@ -4,17 +4,20 @@ require_relative '../lib/pak'
 
 require 'gli'
 
-BASE = Pak::Main.new(Pak::Utils.new)
-
 # Cli main parser
 class Cli
   extend GLI::App
 
+  # cli options
   subcommand_option_handling :normal
   arguments :strict
 
+  # information
   program_desc 'a handy runner of distributions packages manager commands. '
   version Pak::VERSION
+
+  # begin
+  BASE = Pak::Main.new
 
   desc 'install package(s) from repositories'
   arg_name 'package(s) name'

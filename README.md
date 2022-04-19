@@ -119,7 +119,9 @@ as standalone package to follow the UNIX main rule: 'do one thing, well'.
 - check if config file exist, broken symlink or is empty
 - only parse found executable commands
 - non-safe mode.
+- each config as a class ending up as an array of configuration files
 - major rewrite based on ansible features
+- error handling
 
 ## License
 
