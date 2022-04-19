@@ -1,45 +1,50 @@
 module Pak
   # Entry point of project
   class Main
-    # x
-    attr_accessor :action, :arguments
+    # current action to be run
+    attr_accessor :action
+
+    # optional arguments given
+    attr_accessor :arguments
 
     def initialize
       @action = action
     end
 
-    def commands
-      parsed_commands = ParsedCommands.new(utils).found
-      commands = Commands.new parsed_commands
+    # returns found packager
+    def packager
+      config = Config.new
+      config.found
+    end
 
-      exit unless commands.any?
+    # get all commands
+    def commands
+      commands = Commands.new packager
       commands.all
     end
 
-    def packager
-      current_packager = CurrentPackager.new(commands.keys)
-      current_packager.packager
-    end
-
+    # translate to real action
     def real_action
-      TranslateAction.real_action commands, packager, action
+      action = TranslateAction.new(commands, action)
+      action.translated
     end
 
-    def need
-      Need.new action
+    # does action needs to become super user
+    def become
+      Become.new action
     end
 
+    # deliver final command
     def final_command
       result = packager, real_action
       result.append arguments
-      result.prepend 'sudo' if need.admin?
+      result.prepend become.found if become.need?
       result.join ' '
     end
 
+    # just go
     def run
       system final_command
     end
-
-    public :run
   end
 end
