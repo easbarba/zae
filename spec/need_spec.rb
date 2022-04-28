@@ -1,12 +1,19 @@
-# frozen_string_literal: true
-
-require 'pak'
-
 require 'spec_helper'
 
 module Pak
   RSpec.describe 'Pak' do
     context 'Need' do
+      # it 'has become ones' do
+      #   commands = Pak::Commands.new(Config.new.found)
+
+      #   expect(commands.packager[:become]).to eq(raw_commands[:become])
+      # end
+
+      # it 'has user ones' do
+      #   commands = Pak::Commands.new(Config.new.found)
+      #   expect(commands.packager[:user]).to eq(raw_commands[:user])
+      # end
+
       # it 'needs to be admin' do
       #   need = Pak::Need.new(:install)
       #   expect(need.admin?).to eq(true)

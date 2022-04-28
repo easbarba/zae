@@ -16,8 +16,8 @@ module Pak
 
     # configuration default folder location
     def folder
-      cfg = Pathname.new(File.join(Dir.home, '.config', 'pak'))
-      # if cfg.exist?
+      cfg = Pathname.new(File.join(Dir.home, '.config', 'pak')) # if cfg.exist?
+
       xdg_config_folder || cfg
     end
 
@@ -56,8 +56,17 @@ module Pak
       all[exec] || nil
     end
 
+    # is there any configuration available?
+    def any?
+      # - config folder do exist?
+      # - any yaml config file?
+      # - .discovered do exist?
+    end
+
     # Get all Configuration files
     def all
+      # return if any?
+
       packagers = {}
 
       folder.each_child do |file|
