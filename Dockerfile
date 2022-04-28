@@ -4,11 +4,8 @@ WORKDIR /usr/src/app
 
 COPY Gemfile pak.gemspec ./
 
-ENV BUNDLER_VERSION 2.3.8
-RUN gem install bundler -v $BUNDLER_VERSION && bundle install
+ENV BUNDLER_VERSION 2.3.12
+RUN gem install bundler -v $BUNDLER_VERSION && bundle
 
-COPY docs/config_examples/*.yaml /root/.config/pak/
+COPY examples /root/.config/pak
 COPY . .
-
-CMD ["exe/pak"]
-
