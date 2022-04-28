@@ -24,8 +24,7 @@ jobs:
 
     - name: prepare config file
       run: |
-        mkdir -pv ~/.config/pak
-        cp docs/config_examples/apt.yaml ~/.config/pak/
+        mkdir -p ~/.config && cp -r examples ~/.config/pak/
 
     - name: Run tests
       run: bundle exec rake
