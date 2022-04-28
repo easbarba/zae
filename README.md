@@ -12,6 +12,14 @@ Look no further! we have here a solution to all your problems: `pak`,
 where the dream of all tired UNIX power-user comes true.
 </pre>
 
+## Disclaimer
+
+'pak' version 2 is a follow-up rewriting based on the great exposition of terraform, ansible and kubernetes cli apps.
+
+Meaning that it ain't working, for now, as configuration layout has been greatly modified.
+
+I can't promise that current API will make to the final 2.0 release. 
+
 ## Usage
 
 ```sh
