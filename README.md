@@ -68,6 +68,18 @@ Or even purge it all and start with your own commands:
 
 `pak` latest version is available at docker hub: `easbarbosa/pak:latest`
 
+
+Of course you can just run it yourself with:
+
+    docker build -t $USER/pak .
+
+    docker run --rm $USER/pak exe/pak search git
+
+or even better with this long one-line command:
+
+    docker run --rm -v $(pwd):/app/ -w /app ruby:3.1.1 bash -c 'mkdir -p ~/.config && cp -r examples ~/.config/pak && bundle && exe/pak search git'
+
+
 ## Configuration
 
 `pak` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/pak`:
