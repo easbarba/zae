@@ -1,32 +1,23 @@
 require 'pathname'
 
 module Pak
-  # Load configuration files
+  # Query for configuration files and returns matching ones
   class Config
-    def self.which?(executable)
-      File.executable? executable.to_s
-    end
-
-    # all packagers found
+    # package manager found
     attr_accessor :packager
 
     def initialize
       @packager = discovered || all[executable]
     end
 
-    # configuration default folder location
+    # config files folder location
     def folder
       cfg = Pathname.new(File.join(Dir.home, '.config', 'pak')) # if cfg.exist?
 
       xdg_config_folder || cfg
     end
 
-    #  when xdg config is set, defaults to it to probe for configuration fiels
-    def xdg_config_folder
-      Pathname.new(File.join(Dir.home, '.config', 'pak')) if ENV['XDG_CONFIG_HOME']
-    end
-
-    # package manager executable which is present
+    # package manager executable available
     def executable
       return Pathname.new(discovered[:exec]).basename.to_path.to_sym if discovered?
 
@@ -35,18 +26,8 @@ module Pak
       Pathname.new(exec).basename.to_path.to_sym
     end
 
-    # packager configuration found
-    def found
-      @packager
-    end
-
+    # active package manager executable
     alias active executable
-
-    # once executable is discovered create a new file w/ its path or name in
-    # $HOME to avoid probing everytime run
-    def discovered?
-      folder.join('.discovered').exist?
-    end
 
     # once executable is discovered create a new file w/ its path or name in
     # $HOME to avoid probing everytime run
@@ -58,9 +39,16 @@ module Pak
 
     # is there any configuration available?
     def any?
+      all.any?
       # - config folder do exist?
       # - any yaml config file?
       # - .discovered do exist?
+    end
+
+    private
+
+    def self.which?(executable)
+      File.executable? executable.to_s
     end
 
     # Get all Configuration files
@@ -77,7 +65,21 @@ module Pak
       packagers
     end
 
-    private
+    # once executable is discovered create a new file w/ its path or name in
+    # $HOME to avoid probing everytime run
+    def discovered?
+      folder.join('.discovered').exist?
+    end
+
+    # packager configuration found
+    def found
+      @packager
+    end
+
+    #  when xdg config is set, defaults to it to probe for configuration fiels
+    def xdg_config_folder
+      Pathname.new(File.join(Dir.home, '.config', 'pak')) if ENV['XDG_CONFIG_HOME']
+    end
 
     # Load file with famous serialization formats
     def load_config(file)

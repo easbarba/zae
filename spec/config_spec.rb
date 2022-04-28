@@ -1,20 +1,25 @@
 require 'spec_helper'
 
 module Pak
-  RSpec.describe 'Pak' do
-    context 'Configuration' do
-      let(:config) { Pak::Config.new }
+  RSpec.describe Config do
+    describe 'Configuration' do
+      subject(:config) { Pak::Config.new }
 
-      it 'has, at least, one configuration file' do
-        expect(config.all.any?).to eq true
+      context '#folder' do
+        it 'has, at least, one file' do
+          expect(config.any?).to eq true
+        end
       end
 
-      it 'has found an available executable' do
-        expect(config.executable).to eq :apt
-      end
+      context 'loaded' do
+        it 'has set an executable' do
+          expect(config.executable).to eq :apt
+        end
 
-      it 'has a loaded configuration' do
-        expect(config.found[:become].any?).to eq(true)
+        it 'has become and user commands' do
+          expect(config.packager[:become][:install]).to eq('install')
+          expect(config.packager[:user][:search]).to eq('search')
+        end
       end
 
       # it 'has already discovered current package manager' do
