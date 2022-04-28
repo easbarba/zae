@@ -1,20 +1,21 @@
 # Pak
 
-A handy runner of distributions packages manager commands. 
+A handy runner of distributions package managers commands. 
 
 <pre>
 Ain't ya just annoyed of having to recall all those different commands of every
 distribution you happen to need to use? apt that, apk this, dnf those...
-goddamn!
 
-Look no further! we have here your solution to all your problems: `pak`,
+geez!
+
+Look no further! we have here a solution to all your problems: `pak`,
 where the dream of all tired UNIX power-user comes true.
 </pre>
 
 ## Usage
 
 ```sh
-pak install git sed
+pak install git neovim
 pak remove openjdk
 pak installed
 pak search '^erlang'
@@ -42,47 +43,46 @@ pak --help
 
 ## Installation
 
-Get all needed dependencies and install with:
+Get all needed dependencies and install in your system with:
 
     $ make install
 
 ## Commands: add, overwrite, append...
 
-In a fresh install or container, its easy to add new commands, one or multiple per time:
+Its rather simple to add new commands, one or multiple per time:
 
     $ pak --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av'
 
-Once a config with exec is added it even easier to add new commands:
+Once a config with exec is present, it is even easier to populate with more commands:
 
     $ pak --add --pkg 'emerge' --search '-s'
 
-Overwrite one command with important options goes the same:
+Swap over commands with interesting options, it goes the same way:
 
     $ pak --add --pkg 'apt' --search 'search --names-only'
 
-Or even purge it all and start with your own commands:
+Or start it all over again:
 
     $ pak --purge --pkg 'apt'
 
 ## Container
 
-`pak` latest version is available at docker hub: `easbarbosa/pak:latest`
+You can find `pak` latest version at docker hub: `easbarbosa/pak:latest`
 
-
-Of course you can just run it yourself with:
+Want to do it the hard way? can be done with:
 
     docker build -t $USER/pak .
 
     docker run --rm $USER/pak exe/pak search git
 
-or even better with this long one-line command:
+Or even better with this long one-line command:
 
     docker run --rm -v $(pwd):/app/ -w /app ruby:3.1.1 bash -c 'mkdir -p ~/.config && cp -r examples ~/.config/pak && bundle && exe/pak search git'
 
 
 ## Configuration
 
-`pak` will look for configuration files containing packagers commands at `$XDG_CONFIG_HOME/pak`:
+`pak` query for configuration files at `$XDG_CONFIG_HOME/pak`:
 
 `$XDG_CONFIG_HOME/pak/apt.yml`
 
@@ -106,7 +106,7 @@ user:
 ```
 
 ## Ruby 3
-  `pak` is built and tested against Ruby 3 but should run correctly with early major versions.
+  Current version of `pak` uses Ruby 3, but, for the moment, should run correctly with early major versions.
 
 ## History
 
