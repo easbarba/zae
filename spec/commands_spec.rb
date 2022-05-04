@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 module Pak
-  RSpec.describe 'Pak' do
+  RSpec.describe 'Commands' do
     context 'commands' do
       let(:raw_commands) do
         Song = Struct.new(:exec, :become, :user)
         Song.new(
-          :apt,
+          :lix,
           { builddep: 'build-dep', clean: 'autoremove', deps:
             'build-dep', download: 'download', fix: 'install -f',
             install: 'install', remove: 'remove',

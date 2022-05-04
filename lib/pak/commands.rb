@@ -1,16 +1,28 @@
 module Pak
-  # All Commands available
+  # Feature requirement:
+  # - TODO list each or all command(s) available,
+  # - TODO returns null if none command is set,
+  # - TODO may default to cli given command.
   class Commands
+    # raw represetation of packager info and commands.
     attr_reader :packager
+
+    # all commands that can be only run as become administrative user.
+    attr_accessor :become
+
+    # all commands that can be run as user,
+    attr_accessor :user
 
     def initialize(packager)
       @packager = packager
     end
 
+    # update repository database
     def update
       get_command :update
     end
 
+    # upgrade system package(s)
     def upgrade
       get_command :upgrade
     end
@@ -19,8 +31,8 @@ module Pak
       get_command :deps
     end
 
-    def clean
-      get_command :clean
+    def autoremove
+      get_command :autoremove
     end
 
     def depends
@@ -43,14 +55,17 @@ module Pak
       get_command :fix
     end
 
+    # search for given package
     def search
       get_command :search
     end
 
+    # provide user with manual information
     def help
       get_command :help
     end
 
+    # show package information
     def show
       get_command :show
     end
@@ -59,6 +74,7 @@ module Pak
       get_command :info
     end
 
+    # packager current version
     def version
       get_command :version
     end
@@ -69,13 +85,17 @@ module Pak
 
     # check if command is available in either become or user, else returns a raw string of it.
     def get_command(command)
-      # TODO: if command is not provided returns string of it, still warn user
-      # of its absence.
+      raise 'command was not provided' and return if command.nil?
 
-      raise 'command was not provided' and return
+      if @packager[:become].key? command
+        @packager[:become][command]
+        @become += command
+      end
 
-      @packager[:become][command] if @packager[:become].has_key? command
-      @packager[:user][command] if @packager[:user].has_key? command
+      if @packager[:user].key? command
+        @packager[:user][command]
+        @user += command
+      end
     end
 
     def all
