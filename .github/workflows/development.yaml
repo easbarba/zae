@@ -23,15 +23,11 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        bundler-cache: false # if true runs 'bundle install' and caches installed gems automatically
 
     - name: prepare config file
       run: |
         mkdir -p ~/.config && cp -r examples ~/.config/pak
-
-
-    - name: update lock
-      run: bundle install
 
     - name: Run tests
       run: bundle exec rake
