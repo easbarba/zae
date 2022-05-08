@@ -27,7 +27,7 @@ jobs:
 
     - name: prepare config file
       run: |
-        mkdir ~/.config && cp examples ~/.config/pak
+        mkdir -p ~/.config && cp -r examples ~/.config/pak
 
     - name: Run tests
       run: bundle exec rake
