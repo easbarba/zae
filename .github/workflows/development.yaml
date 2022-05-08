@@ -29,5 +29,9 @@ jobs:
       run: |
         mkdir -p ~/.config && cp -r examples ~/.config/pak
 
+
+    - name: update lock
+      run: bundle install
+
     - name: Run tests
       run: bundle exec rake
