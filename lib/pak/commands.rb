@@ -4,17 +4,17 @@ module Pak
   # - TODO returns null if none command is set,
   # - TODO may default to cli given command.
   class Commands
-    # raw represetation of packager info and commands.
-    attr_reader :packager
-
     # all commands that can be only run as become administrative user.
-    attr_accessor :become
+    attr_reader :become
 
     # all commands that can be run as user,
-    attr_accessor :user
+    attr_reader :user
 
-    def initialize(packager)
-      @packager = packager
+    def initialize
+      # raw represetation of packager info and commands.
+      @config = Config.new.parsed
+      @become = @config[:become].keys.dup.freeze
+      @user = @config[:user].keys.dup.freeze
     end
 
     # update repository database
@@ -87,23 +87,16 @@ module Pak
     def get_command(command)
       raise 'command was not provided' and return if command.nil?
 
-      if @packager[:become].key? command
-        @packager[:become][command]
-        @become += command
-      end
-
-      if @packager[:user].key? command
-        @packager[:user][command]
-        @user += command
-      end
+      return @config[:become][command] if @config[:become].key?(command)
+      return @config[:user][command] if @config[:user].key?(command)
     end
 
     def all
-      @packager.slice :become, :user
+      @config.slice :become, :user
     end
 
     def any?
-      @packager.any?
+      @config.any?
     end
   end
 end

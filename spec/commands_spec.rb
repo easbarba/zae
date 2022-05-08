@@ -1,28 +1,35 @@
 require 'spec_helper'
 
+require 'pak'
+
 module Pak
-  RSpec.describe 'Commands' do
-    context 'commands' do
-      let(:raw_commands) do
-        Song = Struct.new(:exec, :become, :user)
-        Song.new(
-          :lix,
-          { builddep: 'build-dep', clean: 'autoremove', deps:
-            'build-dep', download: 'download', fix: 'install -f',
-            install: 'install', remove: 'remove',
-            sysupgrade: 'dist-upgrade', update: 'update',
-            upgrade: 'upgrade' },
-          { depends: 'depends', help: 'help', info: 'show',
-            installed: 'list --installed', search: 'search',
-            version: 'version' }
-        )
-      end
+  RSpec.describe Commands do
+    # context 'set' do
+    #   let(:raw) do
+    #     {
+    #       exec: 'lix',
+    #       become: { autoremove: 'autoremove', deps: 'build-dep',
+    #                 download: 'download', fix: 'install -f',
+    #                 install: 'install', remove: 'remove',
+    #                 sysupgrade: 'dist-upgrade', update: 'update',
+    #                 upgrade: 'upgrade' },
+    #       user: { depends: 'depends', help: 'help', info: 'show',
+    #               installed: 'list --installed', search: 'search',
+    #               version: 'version' }
+    #     }
+    #   end
 
-      # it 'has all of them' do
-      #   commands = Pak::Commands.new(Config.new.found)
+    # it 'defaults to cli given command' do
+    # end
 
-      #   expect(commands.all).to eq(raw_commands)
-      # end
-    end
+    # it 'has none set' do
+    # end
+
+    # it 'has some commands set' do
+    # end
+
+    # it 'has all commands set' do
+    # end
+    # end
   end
 end

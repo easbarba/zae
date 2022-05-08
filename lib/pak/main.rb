@@ -1,50 +1,41 @@
 module Pak
   # Entry point of project
   class Main
-    # current action to be run
+    # choosed action
     attr_accessor :action
 
-    # optional arguments given
+    # optional arguments
     attr_accessor :arguments
 
-    def initialize
-      @action = action
-    end
-
-    # returns found packager
-    def packager
-      config = Config.new
-      config.found
-    end
-
-    # get all commands
     def commands
-      commands = Commands.new packager
-      commands.all
+      Commands.new
     end
 
-    # translate to real action
     def real_action
-      action = TranslateAction.new(commands, action)
-      action.translated
+      @action
+      # commands.install
     end
 
-    # does action needs to become super user
+    # check if action requires super user to run
     def become
       Become.new action
     end
 
     # deliver final command
     def final_command
-      result = packager, real_action
-      result.append arguments
-      result.prepend become.found if become.need?
-      result.join ' '
+      x = [].tap do |x|
+        x << real_action
+        x << arguments
+      end
+
+      x.prepend become.exec if become.need?
+      x.join ' '
     end
 
     # just go
     def run
-      system final_command
+      p final_command
+      # system final_command
     end
   end
 end

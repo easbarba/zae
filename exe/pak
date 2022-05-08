@@ -48,12 +48,12 @@ class Cli
     c.action do |_, _, args|
       BASE.tap do |x|
         x.action = :search
-        x.arguments = args
+        x.arguments = args[0]
       end.run
     end
   end
 
-  desc 'update packages database'
+  desc 'update database'
   arg_name ''
   command :update do |c|
     c.action do
@@ -63,12 +63,14 @@ class Cli
     end
   end
 
-  desc 'upgrade installed packages'
+  desc 'upgrade packages'
   arg_name ''
   command :upgrade do |c|
-    c.action do
+    c.arg 'arguments'
+    c.action do |_, _, args|
       BASE.tap do |x|
         x.action = :upgrade
+        x.arguments = args
       end.run
     end
   end

@@ -4,10 +4,10 @@ module Pak
   # Query for configuration files and returns matching ones
   class Config
     # package manager found
-    attr_accessor :packager
+    attr_accessor :parsed
 
     def initialize
-      @packager = discovered || all[executable]
+      @parsed = discovered || all[executable]
     end
 
     # config files folder location
@@ -55,25 +55,18 @@ module Pak
     def all
       # return if any?
 
-      packagers = {}
-
-      folder.each_child do |file|
-        name = file.sub_ext('').basename.to_s.to_sym
-        packagers[name] = load_config(file)
+      {}.tap do |elem|
+        folder.each_child do |file|
+          name = file.sub_ext('').basename.to_s.to_sym
+          elem[name] = load_config(file)
+        end
       end
-
-      packagers
     end
 
     # once executable is discovered create a new file w/ its path or name in
     # $HOME to avoid probing everytime run
     def discovered?
       folder.join('.discovered').exist?
-    end
-
-    # packager configuration found
-    def found
-      @packager
     end
 
     #  when xdg config is set, defaults to it to probe for configuration fiels
