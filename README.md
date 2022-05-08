@@ -55,7 +55,7 @@ pak --help
 
 Get all needed dependencies and install in your system with:
 
-    $ make install
+    $ bin/setup && bin/install
 
 ## Commands: add, overwrite, append...
 
