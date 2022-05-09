@@ -1,6 +1,5 @@
 require_relative 'pak/commands'
 require_relative 'pak/config'
-require_relative 'pak/main'
 require_relative 'pak/become'
 require_relative 'pak/version'
 
