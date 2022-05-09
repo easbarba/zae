@@ -1,18 +1,23 @@
+# frozen_string_literal: true
+
+require 'pathname'
+
 module Pak
   # define how command should be run, either to become super user or not.
   class Become
-    def initialize(action)
-      @action = action
+    SUDO = Pathname.new('/usr/bin/sudo')
+
+    def initialize(condition)
+      @condition = condition
     end
 
     def need?
-      become = Commands.new.become
-      become.include? @action
+      @condition
     end
 
     # query which become methods are available on user system
     def exec
-      'sudo'
+      SUDO if SUDO.exist? # TODO: check for become executable
     end
   end
 end
