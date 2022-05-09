@@ -1,11 +1,29 @@
-## [0.0.4] - xx/0x/2022
+## [0.8.0] - 09/05/2022
+
+- become: add need? and default exec
+- config: moar refactor
+- query for and translate command
+- update gemfile_lock deps
+- commands/translate: run command lastly
+- commands/translate: lean formatation
+- commands: improve doc; add becomer todo
+- commands: delay translation of the action
+- exe/pak: uniform arguments reception
+- readme/container: inform only the necessary
+- bump dependencies
+- main is not necessary anymore 
+- container: slim instructions
+- exe/pak: simpler commands execution
+
+## [0.1.0] - 06/05/2022
+
+- pipeline: bump to version checkout@3
+- bin: add more scripts and refer on README
+- gemspec: require at least ruby version 2.6
+  
+## [0.0.4] 
 
 - improve configuration discoverability
-
-
-## [0.0.3] - 03/04/2022
-
-- Initial release
 
 ## [0.0.1] - 03/04/2022
 

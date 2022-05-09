@@ -1,10 +1,10 @@
 Gem::Specification.new do |spec|
   spec.name = 'pak'
-  spec.version = '0.1.0'
+  spec.version = '0.8.0'
   spec.authors = ['easbarba']
   spec.summary = 'a handy runner of distributions packages manager commands'
   spec.homepage = 'https://github.com/easbarba/pak'
-  spec.required_ruby_version = '>= 2.6'
+  spec.required_ruby_version = '>= 2.7'
   spec.license = 'Apache-2.0'
   spec.metadata['homepage_uri'] = spec.homepage
   spec.files = Dir.glob('{lib,exe}/**/*', File::FNM_DOTMATCH).reject { |f| File.directory?(f) }
