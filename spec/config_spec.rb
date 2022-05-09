@@ -21,6 +21,11 @@ module Pak
         expect(config.packager[:become][:install]).to eq('install')
         expect(config.packager[:user][:search]).to eq('search')
       end
+
+      it 'has same command in both become and user' do
+        expect(config.packager[:become][:install]).to eq('install')
+        expect(config.packager[:user][:search]).to eq('search')
+      end
     end
 
     # it 'has already discovered current package manager' do

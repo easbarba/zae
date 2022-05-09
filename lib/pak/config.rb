@@ -1,28 +1,30 @@
+# frozen_string_literal: true
+
 require 'pathname'
 
 module Pak
   # Query for configuration files and returns matching ones
   class Config
+    CFG_FOLDER = Pathname.new(File.join(Dir.home, '.config', 'pak'))
+
     # package manager found
-    attr_accessor :parsed
+    attr_accessor :found
 
     def initialize
-      @parsed = discovered || all[executable]
+      @found = discovered || files[executable]
     end
 
     # config files folder location
     def folder
-      cfg = Pathname.new(File.join(Dir.home, '.config', 'pak')) # if cfg.exist?
-
-      xdg_config_folder || cfg
+      xdg_config_folder || CFG_FOLDER
     end
 
-    # package manager executable available
+    # package manager executable location
     def executable
       return Pathname.new(discovered[:exec]).basename.to_path.to_sym if discovered?
 
       # get all availables executables
-      exec = all.each_value.find { |cfg| Config.which?(cfg[:exec]) }[:exec]
+      exec = files.each_value.find { |cfg| Config.executable? cfg[:exec] }[:exec]
       Pathname.new(exec).basename.to_path.to_sym
     end
 
@@ -30,16 +32,16 @@ module Pak
     alias active executable
 
     # once executable is discovered create a new file w/ its path or name in
-    # $HOME to avoid probing everytime run
+    # $HOME so to avoid probing for it in every startup
     def discovered
       exec = folder.join('.discovered').read.chop.to_sym if discovered?
 
-      all[exec] || nil
+      files[exec] || nil
     end
 
     # is there any configuration available?
     def any?
-      all.any?
+      files.any?
       # - config folder do exist?
       # - any yaml config file?
       # - .discovered do exist?
@@ -47,12 +49,13 @@ module Pak
 
     private
 
-    def self.which?(executable)
-      File.executable? executable.to_s
+    # executable exist?
+    def self.executable?(exec)
+      File.executable? exec.to_s
     end
 
     # Get all Configuration files
-    def all
+    def files
       # return if any?
 
       {}.tap do |elem|
