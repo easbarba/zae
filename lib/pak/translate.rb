@@ -15,17 +15,26 @@ module Pak
       @args = args
       @config = Config.new.found
       @executable = @config[:exec]
-      @become = Become.new(@config[:become].key?(action))
-      @real = get_real(action)
+      @action = action
+      @become = get_become
+      @real = get_real
     end
 
     private
 
-    def get_real(action)
+    def get_become
+      if @config[:become].nil?
+        Become.new false
+      else
+        Become.new @config[:become].key?(@action)
+      end
+    end
+
+    def get_real
       cmd = if @become.need?
-              @config[:become][action]
+              @config[:become][@action]
             else
-              @config[:user][action]
+              @config[:user][@action]
             end
 
       command cmd
