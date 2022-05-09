@@ -11,11 +11,11 @@ GEM
     diff-lcs (1.5.0)
     gli (2.21.0)
     kwalify (0.7.2)
-    parser (3.1.0.0)
+    parser (3.1.2.0)
       ast (~> 2.4.1)
     rainbow (3.1.1)
     rake (13.0.6)
-    reek (6.1.0)
+    reek (6.1.1)
       kwalify (~> 0.7.0)
       parser (~> 3.1.0)
       rainbow (>= 2.0, < 4.0)
@@ -39,9 +39,9 @@ PLATFORMS
 
 DEPENDENCIES
   pak!
-  rake (~> 13.0, >= 13.0.3)
-  reek (~> 6.1)
-  rspec (~> 3.10)
+  rake (~> 13.0, >= 13.0.6)
+  reek (~> 6.1.1)
+  rspec (~> 3.11)
   rufo (~> 0.13.0)
 
 BUNDLED WITH
