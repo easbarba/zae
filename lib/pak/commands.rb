@@ -86,14 +86,14 @@ module Pak
 
     private
 
-    # check if command is available in either become or user, else returns a raw string of it.
+    # query for final command composition
     def translate(command)
       raise 'command was not provided' and return if command.nil?
 
       lambda do |arg|
         [].tap do |el|
           become = @config[:become].key? command
-          el << 'sudo' if become
+          el << 'sudo' if become # TODO: check for become executable
           el << @executable
           el << (become ? @config[:become][command] : @config[:user][command])
         end
