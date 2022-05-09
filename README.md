@@ -69,16 +69,10 @@ Or start it all over again:
 
 You can find `pak` latest version at docker hub: `easbarbosa/pak:latest`
 
-Want to do it the hard way? can be done with:
+Or even easier: 
 
     docker build -t $USER/pak .
-
-    docker run --rm $USER/pak exe/pak search git
-
-Or even better with this long one-line command:
-
-    docker run --rm -v $(pwd):/app/ -w /app ruby:3.1.1 bash -c 'mkdir -p ~/.config && cp -r examples ~/.config/pak && bundle && exe/pak search git'
-
+    docker run --rm -it $USER/pak sh -c 'exe/pak install git'
 
 ## Configuration
 
