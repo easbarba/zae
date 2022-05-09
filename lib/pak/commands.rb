@@ -93,6 +93,7 @@ module Pak
       lambda do |arg|
         [].tap do |el|
           become = @config[:become].key? command
+
           el << 'sudo' if become # TODO: check for become executable
           el << @executable
           el << (become ? @config[:become][command] : @config[:user][command])
