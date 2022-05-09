@@ -1,118 +1,72 @@
+# frozen_string_literal: true
+
 module Pak
   # Feature requirement:
-  # - TODO list each or all command(s) available,
-  # - TODO returns null if none command is set,
-  # - TODO may default to cli given command.
   class Commands
-    # all commands that can be only run as become administrative user.
-    attr_reader :become
-
-    # all commands that can be run as user,
-    attr_reader :user
-
-    # raw represetation of packager info and commands.
-    attr_reader :config
-
-    def initialize
-      @config = Config.new.parsed
-      @executable = @config[:exec]
-    end
-
     # update repository database
     def update
-      translate(:update).call
+      Translate.new(:update).real
     end
 
     # upgrade system package(s)
     def upgrade
-      translate(:upgrade).call
+      Translate.new(:upgrade).real
     end
 
     def deps
-      translate(:deps).call
+      Translate.new(:deps).real
     end
 
-    def autoremove(args)
-      translate(:autoremove).call args
+    def autoremove(...)
+      Translate.new(:autoremove, ...).real
     end
 
     def depends
-      translate(:depends).call
+      Translate.new(:depends).real
     end
 
-    def install(args)
-      translate(:install).call args
+    def install(...)
+      Translate.new(:install, ...).real
     end
 
-    def installed(arg)
-      translate(:installed).call arg
+    def installed(...)
+      Translate.new(:installed, ...).real
     end
 
-    def remove(args)
-      translate(:remove).call args
+    def remove(...)
+      Translate.new(:remove, ...).real
     end
 
-    def download(args)
-      translate(:download).call args
+    def download(...)
+      Translate.new(:download, ...).real
     end
 
-    def fix(args)
-      translate(:fix).call args
+    def fix(...)
+      Translate.new(:fix, ...).real
     end
 
     # search for given package
-    def search(arg)
-      translate(:search).call arg
+    def search(...)
+      Translate.new(:search, ...).real
     end
 
     # provide user with manual information
     def help
-      translate(:help).call
+      Translate.new(:help).real
     end
 
     # show package information
     def show
-      translate(:show).call
+      Translate.new(:show).real
     end
 
-    def info(args)
-      translate(:info).call args
+    def info(...)
+      Translate.new(:info, ...).real
     end
 
     # packager current version
     def version
-      translate(:version).call
+      Translate.new(:version).real
     end
-
-    private
-
-    # query for final command composition
-    def translate(command)
-      raise 'command was not provided' and return if command.nil?
-
-      run = ->(cmd) { system cmd }
-      lambda do |arg|
-        [].tap do |el|
-          become = @config[:become].key? command
-
-          el << 'sudo' if become # TODO: check for become executable
-          el << @executable
-          el << (become ? @config[:become][command] : @config[:user][command])
-        end
-          .+(arg)
-          .join(' ')
-          .yield_self(&run)
-      end
-    end
-
-    def all
-      @config.slice :become, :user
-    end
-
-    def any?
-      @config.any?
-    end
-
-    def to_str; end
   end
 end
