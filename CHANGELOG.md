@@ -1,3 +1,7 @@
+## [0.8.1] - 09/05/2022
+
+- translate: check if there is any become command
+
 ## [0.8.0] - 09/05/2022
 
 - become: add need? and default exec
