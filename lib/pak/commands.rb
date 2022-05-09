@@ -90,6 +90,7 @@ module Pak
     def translate(command)
       raise 'command was not provided' and return if command.nil?
 
+      run = ->(cmd) { system cmd }
       lambda do |arg|
         [].tap do |el|
           become = @config[:become].key? command
@@ -99,7 +100,8 @@ module Pak
           el << (become ? @config[:become][command] : @config[:user][command])
         end
           .+(arg)
-          .join ' '
+          .join(' ')
+          .yield_self(&run)
       end
     end
 
