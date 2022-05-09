@@ -10,85 +10,96 @@ module Pak
     # all commands that can be run as user,
     attr_reader :user
 
+    # raw represetation of packager info and commands.
+    attr_reader :config
+
     def initialize
-      # raw represetation of packager info and commands.
       @config = Config.new.parsed
-      @become = @config[:become].keys.dup.freeze
-      @user = @config[:user].keys.dup.freeze
+      @executable = @config[:exec]
     end
 
     # update repository database
     def update
-      get_command :update
+      translate(:update).call
     end
 
     # upgrade system package(s)
     def upgrade
-      get_command :upgrade
+      translate(:upgrade).call
     end
 
     def deps
-      get_command :deps
+      translate(:deps).call
     end
 
-    def autoremove
-      get_command :autoremove
+    def autoremove(args)
+      translate(:autoremove).call args
     end
 
     def depends
-      get_command :depends
+      translate(:depends).call
     end
 
-    def install
-      get_command :install
+    def install(args)
+      translate(:install).call args
     end
 
-    def remove
-      get_command :remove
+    def installed(arg)
+      translate(:installed).call arg
     end
 
-    def download
-      get_command :download
+    def remove(args)
+      translate(:remove).call args
     end
 
-    def fix
-      get_command :fix
+    def download(args)
+      translate(:download).call args
+    end
+
+    def fix(args)
+      translate(:fix).call args
     end
 
     # search for given package
-    def search
-      get_command :search
+    def search(arg)
+      translate(:search).call arg
     end
 
     # provide user with manual information
     def help
-      get_command :help
+      translate(:help).call
     end
 
     # show package information
     def show
-      get_command :show
+      translate(:show).call
     end
 
-    def info
-      get_command :info
+    def info(args)
+      translate(:info).call args
     end
 
     # packager current version
     def version
-      get_command :version
+      translate(:version).call
     end
-
-    def to_str; end
 
     private
 
     # check if command is available in either become or user, else returns a raw string of it.
-    def get_command(command)
+    def translate(command)
       raise 'command was not provided' and return if command.nil?
 
-      return @config[:become][command] if @config[:become].key?(command)
-      return @config[:user][command] if @config[:user].key?(command)
+      lambda do |arg|
+        [].tap do |el|
+          become = @config[:become].key? command
+          el << 'sudo' if become
+          el << @executable
+          el << (become ? @config[:become][command] : @config[:user][command])
+        end
+          .+(arg)
+          .join ' '
+      end
     end
 
     def all
@@ -98,5 +109,7 @@ module Pak
     def any?
       @config.any?
     end
+
+    def to_str; end
   end
 end
