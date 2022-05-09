@@ -24,7 +24,7 @@ class Cli
   command :install do |c|
     c.arg 'arguments'
     c.action do |_, _, args|
-      COMMANDS.install args
+      p COMMANDS.install args
     end
   end
 
@@ -40,7 +40,7 @@ class Cli
   arg_name 'package name'
   command :search do |c|
     c.action do |_, _, args|
-      COMMANDS.search args[0]
+      COMMANDS.search args
     end
   end
 
@@ -61,11 +61,11 @@ class Cli
     end
   end
 
-  desc 'clean system residual packages dependencies'
+  desc 'auto remove system residual packages dependencies'
   arg_name ''
-  command :clean do |c|
+  command :autoremove do |c|
     c.action do |_, _, args|
-      COMMANDS.clean args
+      COMMANDS.autoremove args
     end
   end
 
@@ -94,10 +94,18 @@ class Cli
   end
 
   desc 'fix system package manager issues'
-  arg_name ''
+  arg_name 'packages'
   command :fix do |c|
     c.action do |_, _, args|
       COMMANDS.fix args
+    end
+  end
+
+  desc 'package manager version'
+  arg_name ''
+  command :fix do |c|
+    c.action do
+      COMMANDS.version
     end
   end
 end
