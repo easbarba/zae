@@ -24,7 +24,7 @@ class Cli
   command :install do |c|
     c.arg 'arguments'
     c.action do |_, _, args|
-      COMMANDS.commands.install args
+      COMMANDS.install args
     end
   end
 
