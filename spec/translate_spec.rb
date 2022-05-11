@@ -27,6 +27,9 @@ module Pak
 
         expect(trans.to_str).to eq('/usr/bin/gimme /usr/bin/binx uninstall stumpwm git')
       end
+
+      # TODO returns null if none command is set,
+      # TODO may default to cli given command.
     end
   end
 end

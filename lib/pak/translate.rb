@@ -1,14 +1,8 @@
 # frozen_string_literal: true
 
 module Pak
-  # - TODO list each or all command(s) available,
-  # - TODO returns null if none command is set,
-  # - TODO may default to cli given command.
   # translate action to final command
   class Translate
-    # final translation of commands
-    attr_reader :run
-
     def initialize(action, args = [], config = Config.new.found,
                    become: Become.new(action, config))
       @args = args
@@ -19,12 +13,7 @@ module Pak
     end
 
     def to_str
-      cmd = if @become.need?
-              @config[:become][@action]
-            else
-              @config[:user][@action]
-            end
-
+      cmd = @become.need? ? @config[:become][@action] : @config[:user][@action]
       command cmd
     end
 
