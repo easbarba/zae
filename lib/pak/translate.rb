@@ -18,7 +18,7 @@ module Pak
       @become = become
     end
 
-    def real
+    def to_str
       cmd = if @become.need?
               @config[:become][@action]
             else

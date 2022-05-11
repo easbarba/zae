@@ -73,7 +73,7 @@ module Pak
 
     def run(...)
       Translate.new(...)
-               .real
+               .to_str
                .yield_self(&->(cmd) { system cmd })
     end
   end
