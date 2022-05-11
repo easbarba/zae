@@ -5,15 +5,24 @@ require 'pathname'
 module Pak
   # define how command should be run, either to become super user or not.
   class Become
+    attr_accessor
+
     SUDO_PATH = Pathname.new('/usr/bin/sudo')
     DOAS_PATH = Pathname.new('/usr/bin/doas')
 
-    def initialize(condition)
-      @condition = condition
+    def initialize(action, config)
+      @action = action
+      @config = config
     end
 
     def need?
-      @condition
+      return false if @config[:become].nil?
+
+      if @config[:become].key?(@action)
+        true
+      else
+        false
+      end
     end
 
     # query which become methods are available on user system
