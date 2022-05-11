@@ -1,35 +1,32 @@
 require 'spec_helper'
+require 'ostruct'
 
 require 'pak'
 
 module Pak
   RSpec.describe Translate do
-    # context '#need' do
-    # it 'has become ones' do
-    #   commands = Pak::Commands.new(Config.new.found)
+    let(:config) do
+      { exec: '/usr/bin/binx',
+        become: { remove: 'uninstall' },
+        user: { search: 'query -f' } }
+    end
 
-    #   expect(commands.packager[:become]).to eq(raw_commands[:become])
-    # end
+    context '#real' do
+      it 'search' do
+        become = OpenStruct.new(need?: false, exec: '')
 
-    # it 'has user ones' do
-    #   commands = Pak::Commands.new(Config.new.found)
-    #   expect(commands.packager[:user]).to eq(raw_commands[:user])
-    # end
+        trans = Translate.new :search, %w[stumpwm], config,
+                              become: become
 
-    # it 'needs to be admin' do
-    #   need = Pak::Need.new(:install)
-    #   expect(need.admin?).to eq(true)
-    # end
+        expect(trans.real).to eq('/usr/bin/binx query -f stumpwm')
+      end
 
-    # it 'needs arguments' do
-    #   need = Pak::Need.new(:install)
-    #   expect(need.arguments?).to eq(true)
-    # end
+      it 'remove' do
+        become = OpenStruct.new(need?: true, exec: '/usr/bin/gimme')
+        trans = Translate.new :remove, %w[stumpwm git], config, become: become
 
-    # it 'accepts whatever you wish, arguments or no' do
-    #   need = Pak::Need.new(:autoremove)
-    #   expect(need.whatever?).to eq(true)
-    # end
-    # end
+        expect(trans.real).to eq('/usr/bin/gimme /usr/bin/binx uninstall stumpwm git')
+      end
+    end
   end
 end

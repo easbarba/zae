@@ -6,33 +6,23 @@ module Pak
   # - TODO may default to cli given command.
   # translate action to final command
   class Translate
-    # raw represetation of packager info and commands.
-    attr_reader :config
-
     # final translation of commands
-    attr_reader :real
+    attr_reader :run
 
-    def initialize(action, args = [])
+    def initialize(action, args = [], config = Config.new.found,
+                   become: Become.new(action, config))
       @args = args
       @action = action
 
-      @config = Config.new.found
-
-      @become = final_become
-      @real = final_real
+      @config = config
+      @become = become
     end
 
-    private
-
-    def final_become
-      if @config[:become].nil?
-        Become.new false
-      else
-        Become.new @config[:become].key?(@action)
-      end
+    def run
+      real.yield_self(&->(cmd) { system cmd })
     end
 
-    def final_real
+    def real
       cmd = if @become.need?
               @config[:become][@action]
             else
@@ -41,6 +31,8 @@ module Pak
 
       command cmd
     end
+
+    private
 
     # TODO: raise 'command was not provided' and return if command.nil?
     # query for final command composition
@@ -54,7 +46,6 @@ module Pak
       end
         .+(@args)
         .join(' ')
-        .yield_self(&->(cmd) { system cmd })
     end
   end
 end
