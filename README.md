@@ -43,36 +43,9 @@ pak --help
 
 ## Installation
 
-Get all needed dependencies and install in your system with:
+Get all dependencies and install with:
 
     $ bin/setup && bin/install
-
-## Commands: add, overwrite, append...
-
-Its rather simple to add new commands, one or multiple per time:
-
-    $ pak --add --pkg 'emerge' --exec '/usr/bin/emerge' --install '-av'
-
-Once a config with exec is present, it is even easier to populate with more commands:
-
-    $ pak --add --pkg 'emerge' --search '-s'
-
-Swap over commands with interesting options, it goes the same way:
-
-    $ pak --add --pkg 'apt' --search 'search --names-only'
-
-Or start it all over again:
-
-    $ pak --purge --pkg 'apt'
-
-## Container
-
-You can find `pak` latest version at docker hub: `easbarbosa/pak:latest`
-
-Or even easier: 
-
-    docker build -t $USER/pak .
-    docker run --rm -it $USER/pak sh -c 'exe/pak install git'
 
 ## Configuration
 
@@ -99,8 +72,11 @@ user:
   version: version
 ```
 
-## Ruby 3
-  Current version of `pak` uses Ruby 3, but, for the moment, should run correctly with early major versions.
+
+## Container
+
+    docker build -t $USER/pak .
+    docker run --rm -it $USER/pak sh -c 'exe/pak install git'
 
 ## History
 
