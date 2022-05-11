@@ -9,20 +9,22 @@ module Pak
     # raw represetation of packager info and commands.
     attr_reader :config
 
+    # final translation of commands
     attr_reader :real
 
     def initialize(action, args = [])
       @args = args
-      @config = Config.new.found
-      @executable = @config[:exec]
       @action = action
-      @become = get_become
-      @real = get_real
+
+      @config = Config.new.found
+
+      @become = final_become
+      @real = final_real
     end
 
     private
 
-    def get_become
+    def final_become
       if @config[:become].nil?
         Become.new false
       else
@@ -30,7 +32,7 @@ module Pak
       end
     end
 
-    def get_real
+    def final_real
       cmd = if @become.need?
               @config[:become][@action]
             else
@@ -43,24 +45,16 @@ module Pak
     # TODO: raise 'command was not provided' and return if command.nil?
     # query for final command composition
     def command(action)
+      executable = @config[:exec]
+
       [].tap do |el|
         el << @become.exec if @become.need?
-        el << @executable
+        el << executable
         el << action
       end
         .+(@args)
         .join(' ')
         .yield_self(&->(cmd) { system cmd })
     end
-
-    def all
-      @config.slice :become, :user
-    end
-
-    def any?
-      @config.any?
-    end
-
-    def to_str; end
   end
 end
