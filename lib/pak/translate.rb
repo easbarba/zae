@@ -18,10 +18,6 @@ module Pak
       @become = become
     end
 
-    def run
-      real.yield_self(&->(cmd) { system cmd })
-    end
-
     def real
       cmd = if @become.need?
               @config[:become][@action]

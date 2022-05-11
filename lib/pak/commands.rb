@@ -5,68 +5,76 @@ module Pak
   class Commands
     # update repository database
     def update
-      Translate.new(:update).run
+      run :update
     end
 
     # upgrade system package(s)
     def upgrade
-      Translate.new(:upgrade).run
+      run :upgrade
     end
 
     def deps
-      Translate.new(:deps).run
+      run :deps
     end
 
     def autoremove(...)
-      Translate.new(:autoremove, ...).run
+      run(:autoremove, ...)
     end
 
     def depends
-      Translate.new(:depends).run
+      run :depends
     end
 
     def install(...)
-      Translate.new(:install, ...).run
+      run(:install, ...)
     end
 
     def installed(...)
-      Translate.new(:installed, ...).run
+      run(:installed, ...)
     end
 
     def remove(...)
-      Translate.new(:remove, ...).run
+      run(:remove, ...)
     end
 
     def download(...)
-      Translate.new(:download, ...).run
+      run(:download, ...)
     end
 
     def fix(...)
-      Translate.new(:fix, ...).run
+      run(:fix, ...)
     end
 
     # search for given package
     def search(...)
-      Translate.new(:search, ...).run
+      run(:search, ...)
     end
 
     # provide user with manual information
     def help
-      Translate.new(:help).run
+      run :help
     end
 
     # show package information
     def show
-      Translate.new(:show).run
+      run :show
     end
 
     def info(...)
-      Translate.new(:info, ...).run
+      run(:info, ...)
     end
 
     # packager current version
     def version
-      Translate.new(:version).run
+      run :version
+    end
+
+    private
+
+    def run(...)
+      Translate.new(...)
+               .real
+               .yield_self(&->(cmd) { system cmd })
     end
   end
 end
