@@ -1,3 +1,10 @@
+## [0.8.2] - 13/05/2022
+
+- spec: add more specs to config and translate
+- commands is responsible to run final commands
+- become handles all probe actions
+- become: add doas becomer 
+
 ## [0.8.1] - 09/05/2022
 
 - translate: check if there is any become command

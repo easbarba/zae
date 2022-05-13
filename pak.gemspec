@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = 'pak'
-  spec.version = '0.8.1'
+  spec.version = '0.8.2'
   spec.authors = ['easbarba']
   spec.summary = 'a handy runner of distributions packages manager commands'
   spec.homepage = 'https://github.com/easbarba/pak'
