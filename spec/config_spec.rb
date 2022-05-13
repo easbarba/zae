@@ -4,7 +4,7 @@ require 'pak'
 
 module Pak
   RSpec.describe Config, 'All about configuration' do
-    subject(:config) { Pak::Config.new }
+    subject(:config) { Config.new }
 
     context '#folder' do
       it 'has, at least, one file' do
@@ -18,13 +18,12 @@ module Pak
       end
 
       it 'has become and user commands' do
-        expect(config.packager[:become][:install]).to eq('install')
-        expect(config.packager[:user][:search]).to eq('search')
+        expect(config.found[:become][:install]).to eq('install')
+        expect(config.found[:user][:search]).to eq('search')
       end
 
       it 'has same command in both become and user' do
-        expect(config.packager[:become][:install]).to eq('install')
-        expect(config.packager[:user][:search]).to eq('search')
+        expect(config.found[:become][:install]).to eq('install')
       end
     end
 
