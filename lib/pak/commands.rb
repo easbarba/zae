@@ -74,7 +74,12 @@ module Pak
     def run(...)
       Translate.new(...)
                .to_str
-               .yield_self(&->(cmd) { system cmd })
+               .yield_self(&lambda do |cmd|
+                              print 'command: ', cmd
+                              puts
+
+                              system cmd
+                            end)
     end
   end
 end
