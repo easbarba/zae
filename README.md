@@ -85,6 +85,8 @@ as standalone package to follow the UNIX main rule: 'do one thing, well'.
 
 ## TODO
 
+- implement whats is applicable of the twelve factors.
+- prevent naughty words to run as commands such as rm,mv...
 - let user provide w/ additional options to commands (--options).
 - generate configuration template w/ name and executable location only.
 - support flatpak, guix and nix
