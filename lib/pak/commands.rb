@@ -5,81 +5,81 @@ module Pak
   class Commands
     # update repository database
     def update
-      run :update
+      exec :update
     end
 
     # upgrade system package(s)
     def upgrade
-      run :upgrade
+      exec :upgrade
     end
 
     def deps
-      run :deps
+      exec :deps
     end
 
     def autoremove(...)
-      run(:autoremove, ...)
+      exec(:autoremove, ...)
     end
 
     def depends
-      run :depends
+      exec :depends
     end
 
     def install(...)
-      run(:install, ...)
+      exec(:install, ...)
     end
 
     def installed(...)
-      run(:installed, ...)
+      exec(:installed, ...)
     end
 
     def remove(...)
-      run(:remove, ...)
+      exec(:remove, ...)
     end
 
     def download(...)
-      run(:download, ...)
+      exec(:download, ...)
     end
 
     def fix(...)
-      run(:fix, ...)
+      exec(:fix, ...)
     end
 
     # search for given package
     def search(...)
-      run(:search, ...)
+      exec(:search, ...)
     end
 
     # provide user with manual information
     def help
-      run :help
+      exec :help
     end
 
     # show package information
     def show
-      run :show
+      exec :show
     end
 
     def info(...)
-      run(:info, ...)
+      exec(:info, ...)
     end
 
     # packager current version
     def version
-      run :version
+      exec :version
     end
 
     private
 
-    def run(...)
+    def exec(...)
+      print_run = lambda { |cmd|
+        puts "command: #{cmd}"
+        system cmd
+      }
+
       Translate.new(...)
                .to_str
-               .yield_self(&lambda do |cmd|
-                              print 'command: ', cmd
-                              puts
-
-                              system cmd
-                            end)
+               .yield_self(&print_run)
     end
   end
 end
