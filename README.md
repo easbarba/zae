@@ -85,26 +85,16 @@ as standalone package to follow the UNIX main rule: 'do one thing, well'.
 
 ## TODO
 
+- typed ruby
 - implement whats is applicable of the twelve factors.
-- prevent naughty words to run as commands such as rm,mv...
 - let user provide w/ additional options to commands (--options).
-- generate configuration template w/ name and executable location only.
-- support flatpak, guix and nix
-- --packager <PACKAGER> if more than one packager is available, but defaults to distro tradional ones. 
-- display information on the command being executable.
-- check if current configuration has been altered, cli interface is the recommended way.
-- check if current config has weird commands as rm,cd,mv, before running
+- generate configuration template
+- check if current config has suspect commands as rm,cd,mv, before running
 - log configuration changes
 - history of commands
 - upload to main repository package
-- read-only by default after cli modifications?
-- simulate dry-run.
-- regexp.
-- check if config file exist, broken symlink or is empty
-- only parse found executable commands
+- dry-run.
 - non-safe mode.
-- each config as a class ending up as an array of configuration files
-- major rewrite based on ansible features
 - error handling
 
 ## License
