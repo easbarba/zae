@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pak (0.8.1)
+    pak (0.8.2)
       gli (~> 2.21)
 
 GEM

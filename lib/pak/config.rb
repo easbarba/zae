@@ -74,7 +74,7 @@ module Pak
 
     #  when xdg config is set, defaults to it to probe for configuration fiels
     def xdg_config_folder
-      Pathname.new(File.join(Dir.home, '.config', 'pak')) if ENV['XDG_CONFIG_HOME']
+      Pathname.new(File.join(ENV['XDG_CONFIG_HOME'], 'pak')) if ENV['XDG_CONFIG_HOME']
     end
 
     # Load file with famous serialization formats
