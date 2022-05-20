@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Pak
+module Zae
   # Feature requirement:
   class Commands
     # update repository database

@@ -2,7 +2,7 @@
 
 require 'pathname'
 
-module Pak
+module Zae
   # define how command should be run, either to become super user or not.
   class Become
     attr_accessor

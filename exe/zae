@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/pak'
+require_relative '../lib/zae'
 
 require 'gli'
 
@@ -14,10 +14,10 @@ class Cli
 
   # information
   program_desc 'a handy runner of distributions packages manager commands. '
-  version Pak::VERSION
+  version Zae::VERSION
 
   # commands base
-  COMMANDS = Pak::Commands.new
+  COMMANDS = Zae::Commands.new
 
   desc 'install package(s) from repositories'
   arg_name 'package(s) name'

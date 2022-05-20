@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Pak
+module Zae
   # translate action to final command
   class Translate
     def initialize(action, args = [], config = Config.new.found,

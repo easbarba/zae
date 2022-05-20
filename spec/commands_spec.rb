@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-require 'pak'
+require 'zae'
 
-module Pak
+module Zae
   RSpec.describe Commands do
     # context 'set' do
     #   let(:raw) do

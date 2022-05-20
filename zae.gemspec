@@ -1,9 +1,9 @@
 Gem::Specification.new do |spec|
-  spec.name = 'pak'
-  spec.version = '0.8.2'
+  spec.name = 'zae'
+  spec.version = '0.8.3'
   spec.authors = ['easbarba']
   spec.summary = 'a handy runner of distributions packages manager commands'
-  spec.homepage = 'https://github.com/easbarba/pak'
+  spec.homepage = 'https://github.com/easbarba/zae'
   spec.required_ruby_version = '>= 2.7'
   spec.license = 'gpl-v3'
   spec.metadata['homepage_uri'] = spec.homepage

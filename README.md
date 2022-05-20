@@ -1,4 +1,4 @@
-# Pak
+# Zae
 
 A handy runner of distributions package managers commands. 
 
@@ -8,19 +8,19 @@ distribution you happen to need to use? apt that, apk this, dnf those...
 
 geez!
 
-Look no further! we have here a solution to all your problems: `pak`,
+Look no further! we have here a solution to all your problems: `zae`,
 where the dream of all tired UNIX power-user comes true.
 </pre>
 
 ## Usage
 
 ```sh
-pak install git neovim
-pak remove openjdk
-pak installed
-pak search '^erlang'
-pak search --options '--names-only' tmux
-pak --help
+zae install git neovim
+zae remove openjdk
+zae installed
+zae search '^erlang'
+zae search --options '--names-only' tmux
+zae --help
 ```
 
 ## Commands
@@ -49,9 +49,9 @@ Get all dependencies and install with:
 
 ## Configuration
 
-`pak` query for configuration files at `$XDG_CONFIG_HOME/pak`:
+`zae` query for configuration files at `$XDG_CONFIG_HOME/zae`:
 
-`$XDG_CONFIG_HOME/pak/apt.yml`
+`$XDG_CONFIG_HOME/zae/apt.yml`
 
 ```yaml
 exec: /usr/bin/apt
@@ -75,12 +75,12 @@ user:
 
 ## Container
 
-    docker build -t $USER/pak .
-    docker run --rm -it $USER/pak sh -c 'exe/pak install git'
+    docker build -t $USER/zae .
+    docker run --rm -it $USER/zae sh -c 'exe/zae install git'
 
 ## History
 
-`pak` was a module of a super package called `cejo`, and later on extracted
+`zae` was a module of a super package called `cejo`, and later on extracted
 as standalone package to follow the UNIX main rule: 'do one thing, well'.
 
 ## TODO

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-module Pak
-  VERSION = '0.8.2'
+module Zae
+  VERSION = '0.8.3'
 end

@@ -1,3 +1,8 @@
+## [0.8.3] - 20/05/2022
+
+- zae: rename project
+- XDG_CONFIG_HOME: set to what path user configured for
+
 ## [0.8.2] - 13/05/2022
 
 - spec: add more specs to config and translate

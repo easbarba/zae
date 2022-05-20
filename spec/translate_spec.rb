@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'ostruct'
 
-require 'pak'
+require 'zae'
 
-module Pak
+module Zae
   RSpec.describe Translate do
     let(:config) do
       { exec: '/usr/bin/binx',
@@ -28,7 +28,7 @@ module Pak
         expect(trans.to_str).to eq('/usr/bin/gimme /usr/bin/binx uninstall stumpwm git')
       end
 
-      # TODO returns null if none command is set,
+      # TODO: returns null if none command is set,
       # TODO may default to cli given command.
     end
   end

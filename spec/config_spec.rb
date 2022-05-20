@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-require 'pak'
+require 'zae'
 
-module Pak
+module Zae
   RSpec.describe Config, 'All about configuration' do
     subject(:config) { Config.new }
 

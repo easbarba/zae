@@ -2,10 +2,10 @@
 
 require 'pathname'
 
-module Pak
+module Zae
   # Query for configuration files and returns matching ones
   class Config
-    CFG_FOLDER = Pathname.new(File.join(Dir.home, '.config', 'pak'))
+    CFG_FOLDER = Pathname.new(File.join(Dir.home, '.config', 'zae'))
 
     # package manager found
     attr_accessor :found
@@ -74,7 +74,7 @@ module Pak
 
     #  when xdg config is set, defaults to it to probe for configuration fiels
     def xdg_config_folder
-      Pathname.new(File.join(ENV['XDG_CONFIG_HOME'], 'pak')) if ENV['XDG_CONFIG_HOME']
+      Pathname.new(File.join(ENV['XDG_CONFIG_HOME'], 'zae')) if ENV['XDG_CONFIG_HOME']
     end
 
     # Load file with famous serialization formats
