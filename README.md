@@ -12,6 +12,10 @@ Look no further! we have here a solution to all your problems: `zae`,
 where the dream of all tired UNIX power-user comes true.
 </pre>
 
+
+[rubygems](https://rubygems.org/gems/zae)
+[hub.docker](https://hub.docker.com/repository/docker/easbarbosa/zae)
+
 ## Usage
 
 ```sh
