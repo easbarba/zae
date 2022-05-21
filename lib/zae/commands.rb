@@ -3,70 +3,13 @@
 module Zae
   # Feature requirement:
   class Commands
-    # update repository database
-    def update
-      exec :update
-    end
+    ACTIONS = %i[update upgrade deps autoremove depends install installed remove
+                 fix search help show info version].freeze
 
-    # upgrade system package(s)
-    def upgrade
-      exec :upgrade
-    end
-
-    def deps
-      exec :deps
-    end
-
-    def autoremove(...)
-      exec(:autoremove, ...)
-    end
-
-    def depends
-      exec :depends
-    end
-
-    def install(...)
-      exec(:install, ...)
-    end
-
-    def installed(...)
-      exec(:installed, ...)
-    end
-
-    def remove(...)
-      exec(:remove, ...)
-    end
-
-    def download(...)
-      exec(:download, ...)
-    end
-
-    def fix(...)
-      exec(:fix, ...)
-    end
-
-    # search for given package
-    def search(...)
-      exec(:search, ...)
-    end
-
-    # provide user with manual information
-    def help
-      exec :help
-    end
-
-    # show package information
-    def show
-      exec :show
-    end
-
-    def info(...)
-      exec(:info, ...)
-    end
-
-    # packager current version
-    def version
-      exec :version
+    ACTIONS.each do |name|
+      define_method name do |args = []|
+        exec name, args
+      end
     end
 
     private
