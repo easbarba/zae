@@ -12,7 +12,7 @@ module Zae
       @become = become
     end
 
-    def to_str
+    def to_s
       cmd = @become.need? ? @config[:become][@action] : @config[:user][@action]
       command cmd
     end

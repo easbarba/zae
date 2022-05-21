@@ -1,28 +1,32 @@
 # frozen_string_literal: true
 
 module Zae
-  # Feature requirement:
+  # All Commands available
   class Commands
     ACTIONS = %i[update upgrade deps autoremove depends install installed remove
-                 fix search help show info version].freeze
+                 fix search help show info version]
 
-    ACTIONS.each do |name|
-      define_method name do |args = []|
-        exec name, args
+    def self.create_commands
+      ACTIONS.each do |name|
+        define_method name do |args = []|
+          Commands.exec name, args
+        end
       end
     end
 
-    private
-
-    def exec(...)
+    def self.exec(...)
       print_run = lambda { |cmd|
         puts "command: #{cmd}"
         system cmd
       }
 
       Translate.new(...)
-               .to_str
+               .to_s
                .yield_self(&print_run)
+    end
+
+    def initialize
+      Commands.create_commands
     end
   end
 end
