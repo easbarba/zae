@@ -13,7 +13,7 @@ where the dream of all tired UNIX power-user comes true.
 </pre>
 
 
-[rubygems](https://rubygems.org/gems/zae)
+Available on: [rubygems](https://rubygems.org/gems/zae) |
 [hub.docker](https://hub.docker.com/repository/docker/easbarbosa/zae)
 
 ## Usage
