@@ -1,9 +1,11 @@
+require_relative 'lib/info'
+
 Gem::Specification.new do |spec|
   spec.name = 'zae'
-  spec.version = '0.8.3'
+  spec.version = Zae::VERSION
   spec.authors = ['easbarba']
-  spec.summary = 'a handy runner of distributions packages manager commands'
-  spec.homepage = 'https://github.com/easbarba/zae'
+  spec.summary = Zae::DESCRIPTION
+  spec.homepage = Zae::REPOSITORY
   spec.required_ruby_version = '>= 2.7'
   spec.license = 'gpl-v3'
   spec.metadata['homepage_uri'] = spec.homepage

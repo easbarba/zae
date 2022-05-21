@@ -1,113 +1,116 @@
 #!/usr/bin/env ruby
 
+require_relative '../lib/info'
 require_relative '../lib/zae'
 
 require 'gli'
 
 # Cli main parser
-class Cli
-  extend GLI::App
+module Zae
+  class Cli
+    extend GLI::App
 
-  # cli options
-  subcommand_option_handling :normal
-  arguments :strict
+    # cli options
+    subcommand_option_handling :normal
+    arguments :strict
 
-  # information
-  program_desc 'a handy runner of distributions packages manager commands. '
-  version Zae::VERSION
+    # information
+    program_desc DESCRIPTION
+    version VERSION
 
-  # commands base
-  COMMANDS = Zae::Commands.new
+    # commands base
+    COMMANDS = Commands.new
 
-  desc 'install package(s) from repositories'
-  arg_name 'package(s) name'
-  command :install do |c|
-    c.arg 'arguments'
-    c.action do |_, _, args|
-      p COMMANDS.install args
+    desc 'install package(s) from repositories'
+    arg_name 'package(s) name'
+    command :install do |c|
+      c.arg 'arguments'
+      c.action do |_, _, args|
+        COMMANDS.install args
+      end
     end
-  end
 
-  desc 'remove one or more installed packages'
-  arg_name 'package(s) name'
-  command :remove do |c|
-    c.action do |_, _, args|
-      COMMANDS.remove args
+    desc 'remove one or more installed packages'
+    arg_name 'package(s) name'
+    command :remove do |c|
+      c.action do |_, _, args|
+        COMMANDS.remove args
+      end
     end
-  end
 
-  desc 'search for matching packages of term'
-  arg_name 'package name'
-  command :search do |c|
-    c.action do |_, _, args|
-      COMMANDS.search args
+    desc 'search for matching packages of term'
+    arg_name 'package name'
+    command :search do |c|
+      c.action do |_, _, args|
+        COMMANDS.search args
+      end
     end
-  end
 
-  desc 'update database'
-  arg_name ''
-  command :update do |c|
-    c.action do
-      COMMANDS.update
+    desc 'update database'
+    arg_name ''
+    command :update do |c|
+      c.action do
+        COMMANDS.update
+      end
     end
-  end
 
-  desc 'upgrade packages'
-  arg_name ''
-  command :upgrade do |c|
-    c.arg 'arguments'
-    c.action do
-      COMMANDS.upgrade
+    desc 'upgrade packages'
+    arg_name ''
+    command :upgrade do |c|
+      c.arg 'arguments'
+      c.action do
+        COMMANDS.upgrade
+      end
     end
-  end
 
-  desc 'auto remove system residual packages dependencies'
-  arg_name ''
-  command :autoremove do |c|
-    c.action do |_, _, args|
-      COMMANDS.autoremove args
+    desc 'auto remove system residual packages dependencies'
+    arg_name ''
+    command :autoremove do |c|
+      c.action do |_, _, args|
+        COMMANDS.autoremove args
+      end
     end
-  end
 
-  desc 'download package binary'
-  arg_name 'package name'
-  command :download do |c|
-    c.action do |_, _, args|
-      COMMANDS.download args
+    desc 'download package binary'
+    arg_name 'package name'
+    command :download do |c|
+      c.action do |_, _, args|
+        COMMANDS.download args
+      end
     end
-  end
 
-  desc 'list installed packages'
-  arg_name ''
-  command :installed do |c|
-    c.action do |_, _, args|
-      COMMANDS.installed args
+    desc 'list installed packages'
+    arg_name ''
+    command :installed do |c|
+      c.action do |_, _, args|
+        COMMANDS.installed args
+      end
     end
-  end
 
-  desc 'view info about a specific package'
-  arg_name 'package name'
-  command :info do |c|
-    c.action do |_, _, args|
-      COMMANDS.info args
+    desc 'view info about a specific package'
+    arg_name 'package name'
+    command :info do |c|
+      c.action do |_, _, args|
+        COMMANDS.info args
+      end
     end
-  end
 
-  desc 'fix system package manager issues'
-  arg_name 'packages'
-  command :fix do |c|
-    c.action do |_, _, args|
-      COMMANDS.fix args
+    desc 'fix system package manager issues'
+    arg_name 'packages'
+    command :fix do |c|
+      c.action do |_, _, args|
+        COMMANDS.fix args
+      end
     end
-  end
 
-  desc 'package manager version'
-  arg_name ''
-  command :fix do |c|
-    c.action do
-      COMMANDS.version
+    desc 'package manager version'
+    arg_name ''
+    command :fix do |c|
+      c.action do
+        COMMANDS.version
+      end
     end
   end
 end
 
-exit Cli.run(ARGV)
+exit Zae::Cli.run(ARGV)

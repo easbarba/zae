@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pak (0.8.2)
+    zae (0.8.3)
       gli (~> 2.21)
 
 GEM
@@ -38,11 +38,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  pak!
   rake (~> 13.0, >= 13.0.6)
   reek (~> 6.1.1)
   rspec (~> 3.11)
   rufo (~> 0.13.0)
+  zae!
 
 BUNDLED WITH
    2.3.12
