@@ -6,9 +6,7 @@ module Zae
   # define how command should be run, either to become super user or not.
   class Become
     attr_accessor
-
-    SUDO_PATH = Pathname.new('/usr/bin/sudo')
-    DOAS_PATH = Pathname.new('/usr/bin/doas')
+    BECOMERS = [Pathname.new('/usr/bin/sudo'), Pathname.new('/usr/bin/doas')].freeze
 
     def initialize(action, config)
       @action = action
@@ -27,12 +25,8 @@ module Zae
 
     # query which become methods are available on user system
     def exec
-      if SUDO_PATH.exist?
-        SUDO_PATH
-      elsif DOAS_PATH.exist?
-        DOAS_PATH
-      else
-        'unknown'
+      BECOMERS.each do |b|
+        return b if b.exist?
       end
     end
   end

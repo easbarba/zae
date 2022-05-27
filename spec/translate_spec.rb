@@ -18,14 +18,14 @@ module Zae
         trans = Translate.new :search, %w[stumpwm], config,
                               become: become
 
-        expect(trans.to_str).to eq('/usr/bin/binx query -f stumpwm')
+        expect(trans.to_s).to eq('/usr/bin/binx query -f stumpwm')
       end
 
       it 'remove' do
         become = OpenStruct.new(need?: true, exec: '/usr/bin/gimme')
         trans = Translate.new :remove, %w[stumpwm git], config, become: become
 
-        expect(trans.to_str).to eq('/usr/bin/gimme /usr/bin/binx uninstall stumpwm git')
+        expect(trans.to_s).to eq('/usr/bin/gimme /usr/bin/binx uninstall stumpwm git')
       end
 
       # TODO: returns null if none command is set,
