@@ -29,12 +29,7 @@ module Zae
       end
     end
 
-    # it 'has already discovered current package manager' do
-    #   expect(config.discovered?).to eq true
-    # end
-
-    # it 'gets all of package, just right!' do
-    #   expect(config.packagers).to eq(%i[dnf apt])
-    # end
+    pending 'has already discovered current package manager'
+    pending 'gets all of package, just right!'
   end
 end
