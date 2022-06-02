@@ -5,37 +5,34 @@ require 'pathname'
 module Zae
   # Query for configuration files and returns matching ones
   class Config
-    CFG_FOLDER = Pathname.new(File.join(Dir.home, '.config', 'zae'))
+    # default configuration location
+    DEFAULT_CONFIG_FOLDER = Pathname.new(File.join(Dir.home, '.config', 'zae'))
 
-    # package manager found
+    # the package manager found
     attr_accessor :found
 
     def initialize
       @found = discovered || files[executable]
     end
 
-    # config files folder location
+    # configuration folder location
     def folder
-      xdg_config_folder || CFG_FOLDER
+      xdg_config_folder || DEFAULT_CONFIG_FOLDER
     end
 
-    # package manager executable location
+    # package manager's executable location
     def executable
       return Pathname.new(discovered[:exec]).basename.to_path.to_sym if discovered?
 
       # get all availables executables
-      exec = files.each_value.find { |cfg| Config.executable? cfg[:exec] }[:exec]
+      exec = files.each_value.find { |cfg| Config.executable?(cfg[:exec]) }[:exec]
       Pathname.new(exec).basename.to_path.to_sym
     end
 
-    # active package manager executable
-    alias active executable
-
-    # once executable is discovered create a new file w/ its path or name in
+    # Once an executable is discovered create a new file w/ its path or name in
     # $HOME so to avoid probing for it in every startup
     def discovered
       exec = folder.join('.discovered').read.chop.to_sym if discovered?
-
       files[exec] || nil
     end
 
@@ -47,17 +44,15 @@ module Zae
       # - .discovered do exist?
     end
 
-    private
-
-    # executable exist?
+    # do executable exist?
     def self.executable?(exec)
       File.executable? exec.to_s
     end
 
-    # Get all Configuration files
-    def files
-      # return if any?
+    private
 
+    # List one, or if more, all configuration files
+    def files
       {}.tap do |elem|
         folder.each_child do |file|
           name = file.sub_ext('').basename.to_s.to_sym
@@ -66,18 +61,19 @@ module Zae
       end
     end
 
-    # once executable is discovered create a new file w/ its path or name in
-    # $HOME to avoid probing everytime run
+    # Once an executable is discovered, it better creates a file
+    # indicating current system package manager executable
+    # to avoid probing for it everytime run
     def discovered?
       folder.join('.discovered').exist?
     end
 
-    #  when xdg config is set, defaults to it to probe for configuration fiels
+    #  When xdg config is set, defaults to it configuration location
     def xdg_config_folder
       Pathname.new(File.join(ENV['XDG_CONFIG_HOME'], 'zae')) if ENV['XDG_CONFIG_HOME']
     end
 
-    # Load file with famous serialization formats
+    # Load serialized file to ruby object
     def load_config(file)
       require 'yaml'
       YAML.load_file(file, symbolize_names: true)
