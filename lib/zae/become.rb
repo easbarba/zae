@@ -20,7 +20,7 @@ module Zae
 
     # query which become methods are available on user system
     def exec
-      BECOMERS.each { |exe| return exe if exe.exist? }
+      BECOMERS.first { |exe| return exe if exe.exist? }
     end
   end
 end
