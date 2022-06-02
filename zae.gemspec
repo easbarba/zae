@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.6'
   spec.add_development_dependency 'reek', '~> 6.1.1'
+  spec.add_development_dependency 'rexml', '~> 3.2', '>= 3.2.5'
   spec.add_development_dependency 'rspec', '~> 3.11'
   spec.add_development_dependency 'rufo', '~> 0.13.0'
 
