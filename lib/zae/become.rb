@@ -5,7 +5,6 @@ require 'pathname'
 module Zae
   # define how command should be run, either to become super user or not.
   class Become
-    attr_accessor
     BECOMERS = [Pathname.new('/usr/bin/sudo'), Pathname.new('/usr/bin/doas')].freeze
 
     def initialize(action, config)
@@ -16,18 +15,12 @@ module Zae
     def need?
       return false if @config[:become].nil?
 
-      if @config[:become].key?(@action)
-        true
-      else
-        false
-      end
+      @config[:become].key?(@action)
     end
 
     # query which become methods are available on user system
     def exec
-      BECOMERS.each do |b|
-        return b if b.exist?
-      end
+      BECOMERS.each { |exe| return exe if exe.exist? }
     end
   end
 end
