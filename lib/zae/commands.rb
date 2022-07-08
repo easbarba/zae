@@ -26,7 +26,7 @@ module Zae
     def self.exec(...)
       Translate.new(...)
                .to_s
-               .yield_self(&PRINT_RUN)
+               .then(&PRINT_RUN)
     end
   end
 end
